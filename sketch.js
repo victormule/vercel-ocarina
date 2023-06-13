@@ -40,6 +40,18 @@ let discordDiv;
 let discordIframe;
 let isDiscordVisible = false;
 
+// Initialisation du tableau qui contiendra les images et des variables qui contrôleront l'affichage
+let diaporama = [];
+let index = 0;
+let moveDiapo = 0;
+let scrolling = false;
+let scrollDirection = 1;
+let lastTime = 0;
+let delay = 2000; // Délai en millisecondes entre chaque changement d'image (2 secondes)
+let stopDuration = 3000; // Durée en millisecondes de l'arrêt sur chaque image (1 seconde)
+let scrollSpeed = 6; // Vitesse de défilement
+//...
+
 function preload() {
   font = loadFont("font/pkmndp.ttf");
   song = loadSound("assets/littleroot.mp3");
@@ -124,6 +136,7 @@ function preload() {
   oldwoman3 =  loadImage("assets/oldwoman2.png")
   hokusai = loadImage("assets/hokusai.gif")
   hokusai1 = loadImage("assets/hokusai1.gif")
+  hokusaiFace = loadImage("assets/Hokusai.png")
   bar1 = loadImage('assets/BAR1.png')
   bar2 = loadImage('assets/BAR2.png')
   bar3 = loadImage('assets/BAR3.png')
@@ -133,10 +146,18 @@ function preload() {
   bar7 = loadImage('assets/BAR7.png')
   bar8 = loadImage('assets/BAR8.png')
   Img5 = loadImage("assets/Tree.png");
+  maskDiaporama = loadImage("assets/maskDiaporama.png")
   frameRate(fr);
+    // Chargement des images dans le tableau "diaporama"
+    for (let i = 1; i <= 7; i++) {
+      diaporama[i - 1] = loadImage('assets/imageDiaporama' + i + '.png');
+    }
 }
 
+
+
 function setup() {
+  graphics = createGraphics(512, 383);
   textFont(font);
   textSize(fontsize);
   textAlign(CENTER, CENTER);
@@ -1351,6 +1372,7 @@ function draw() {
  //------------MAP2------------//
   if (mapping == 2) {
     map2CharacterControl();
+    
     //---MAP 2 limite---//
 
     if (x <= 98) {
@@ -2467,7 +2489,10 @@ function map4CharacterControl() {
   if (z < 230) {
     Z = +0.3;
   }
+  diaporamaHokusai();
+  image(maskDiaporama, 414, 2308);
   map4Affichage();
+
 }
 
 function map4Environnement(){
@@ -2481,27 +2506,43 @@ function map4Environnement(){
 
 function map4Affichage() {
         //---Affichage mama-san---//
-        if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
-          noTint();
-          image(img31, 550, y +20);
-          image(img30, 10, y + 130);
-          fill(30, 250);
-          if (FR == 255) {
-            text("Depuis que les développeurs sont installés ici,", 476, y + 230);
-            text("je vois arriver plein de nouveaux voyageurs.", 476, y + 266);
-            text("Et ça, c'est bon pour les affaires !", 476, y + 302);
-          }
-          if (EN == 255) {
-            text("Since the developers settled here,", 476, y + 230);
-            text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
-            text("And that's good for business!", 476, y + 302);
-          }
-        }
-        //---Affichage mama-san stop---//
-        if (x >= 110 && x <= 200 && y >= 2350 && y <= 2460) {
-          mapping = 6;
+  if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
+    noTint();
+    image(img31, 550, y +20);
+    image(img30, 10, y + 130);
+    fill(30, 250);
+    if (FR == 255) {
+      text("Depuis que les développeurs sont installés ici,", 476, y + 230);
+      text("je vois arriver plein de nouveaux voyageurs.", 476, y + 266);
+      text("Et ça, c'est bon pour les affaires !", 476, y + 302);
+    }
+    if (EN == 255) {
+      text("Since the developers settled here,", 476, y + 230);
+      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
+      text("And that's good for business!", 476, y + 302);
+    }
+  }
+  //---Affichage mama-san stop---//
+  if (x >= 110 && x <= 200 && y >= 2350 && y <= 2460) {
+    mapping = 6;
           
-        }
+  }
+  if (x >= 280 && x <= 316 && y >= 2500 && y <= 2550) {
+    noTint();
+    image(hokusaiFace, 550+186, y +20);
+    image(img30, 10+186, y + 130);
+    fill(30, 250);
+    if (FR == 255) {
+      text("Avec Queulorior nous avons parcouru", 476+186, y + 230);
+      text("la region et réalisé quelques chef-d'oeuvre.", 476+186, y + 266);
+      text("Je te laisse admirer !", 476+186, y + 302);
+    }
+    if (EN == 255) {
+      text("Since the developers settled here,", 476, y + 230);
+      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
+      text("And that's good for business!", 476, y + 302);
+    }
+  }
 }
 
 function openchest() {
@@ -2736,6 +2777,39 @@ function mamasan(){
  
 }
 
+function diaporamaHokusai(){
+  if (x >= 280 && x <= 316 && y >= 2500 && y <= 2550) {
+    if (scrolling) {
+      moveDiapo += scrollSpeed * scrollDirection;
+
+      if ((scrollDirection == -1 && moveDiapo <= 0) || (scrollDirection == 1 && moveDiapo >= 383+15)) {
+        scrolling = false;
+        index += scrollDirection;
+        index = (index + diaporama.length) % diaporama.length;
+        moveDiapo = 0;
+        lastTime = millis(); // Réinitialiser le temps écoulé à partir du dernier changement d'image
+      }
+    } else {
+      // Vérifier si le temps d'arrêt sur l'image est écoulé
+      if (millis() - lastTime >= stopDuration) {
+        scrolling = true;
+        scrollDirection = 1;
+      }
+    }
+
+    graphics.background(0);
+    graphics.image(diaporama[index], 0, moveDiapo, 512, 383);
+    if (scrollDirection == 1) {
+      graphics.image(diaporama[(index + 1) % diaporama.length], 0, moveDiapo - 383 -15, 512, 383);
+    } else {
+      let prevIndex = (index - 1 + diaporama.length) % diaporama.length;
+      graphics.image(diaporama[prevIndex], 0, moveDiapo + 383 +15, 512, 383);
+    }
+
+    // Dessiner le canvas graphique sur le canvas principal aux coordonnées (x, y)
+    image(graphics, 414, 2308);
+  }
+}
 ///MUSIQUE FONCTION///
 function volume() {
   var sliderValue = gainSlider.value();
@@ -2871,6 +2945,11 @@ function mouseWheel(event) {
     scrollbarHeight += event.deltaY;
     scrollbarHeight = constrain(scrollbarHeight, 50, viewHeight);
   }
+    // Si le défilement n'est pas en cours, on démarre le défilement dans la direction opposée à celle de la molette de la souris
+    if (!scrolling) {
+      scrolling = true;
+      scrollDirection = -Math.sign(event.delta);
+    }
 }
 
 function scrollbarbox(){
