@@ -17,6 +17,8 @@ let a = 1;
 let N = -400;
 let pseudoInput;
 let commentInput;
+let commentInput2;
+let dialogueLicata;
 let sendButton;
 let formulation;
 fontsize = 28;
@@ -137,6 +139,11 @@ function preload() {
   hokusai = loadImage("assets/hokusai.gif")
   hokusai1 = loadImage("assets/hokusai1.gif")
   hokusaiFace = loadImage("assets/Hokusai.png")
+  licata = loadImage("assets/licata.png")
+  licata1 = loadImage("assets/licata1.png")
+  licataFace = loadImage("assets/licata.gif")
+  //dialogueLicata = loadImage("assets/windowskinDialogue.png")
+  //dialogueLicata = loadImage("assets/windowskinDialogue.png");
   bar1 = loadImage('assets/BAR1.png')
   bar2 = loadImage('assets/BAR2.png')
   bar3 = loadImage('assets/BAR3.png')
@@ -1463,6 +1470,15 @@ function draw() {
           y -= 5;
           N += 5;
         }
+        //---(Licata)---//
+        if (x >= 0 && x <= 120 && y >= 2550 && y <= 2580) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 0 && x <= 120 && y >= 2536 && y <= 2572) {
+          y -= 5;
+          N += 5;
+        }
 
         //---(table droite)---//
         if (x >= 253 && x <= 336 && y >= 2522 && y <= 2572) {
@@ -2480,6 +2496,7 @@ function map4CharacterControl() {
   }
   image(taverne2,79,2368);
   image(hokusai, 303, 2534);
+  image(licata, 49, 2560);
   tint(255, z);
   image(light2, 33, 2334);
   z += Z;
@@ -2502,6 +2519,7 @@ function map4Environnement(){
   image(shadow, x + 2, y + 34);
   image(hokusai1, 303, 2534);
   image(oldwoman, 181, 2450);
+  image(licata1, 49, 2560);
 }
 
 function map4Affichage() {
@@ -2521,8 +2539,50 @@ function map4Affichage() {
       text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
       text("And that's good for business!", 476, y + 302);
     }
+    
   }
-  //---Affichage mama-san stop---//
+  //---Affichage licata---//
+  if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
+    noTint();
+    //image(dialogueLicata, 370, y -140 );
+    image(licataFace, 550 +186, y +40);
+    image(img30, 10 +186, y + 130);
+   
+    fill(30, 250);
+    if (FR == 255) {
+      text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
+      text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
+      text("Et que me veux-tu étranger?", 476+186, y + 302);
+    }
+    if (EN == 255) {
+      text("Since the developers settled here,", 476, y + 230);
+      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
+      text("And that's good for business!", 476, y + 302);
+    }
+    if (!commentInput2) {
+      dialogueLicata = createImg("assets/windowskinDialogue.png");
+      dialogueLicata.position(windowWidth/2 - 110 , 172 );
+      dialogueLicata.style("z-index", "800");
+      commentInput2 = createElement('textarea').size(280, 180);
+      commentInput2.position(windowWidth/2 - 52 , 224 );
+      commentInput2.style("font-family", "pkmndp");
+      commentInput2.style("font-size", "16px");
+      commentInput2.style('opacity', '0.65');
+      commentInput2.style("resize", "none");
+      commentInput2.style("z-index", "1000");
+      commentInput2.attribute("placeholder", "N'hésitez pas à laisser un commentaire ici!");
+    }
+  } else {
+  // Cacher ou supprimer le formulaire de commentaire
+    if (commentInput2) {
+      commentInput2.remove();
+      dialogueLicata.remove();
+      commentInput2 = null;
+      dialogueLicata = null;
+
+    }
+  }
+  //---Affichage hokusai---//
   if (x >= 110 && x <= 200 && y >= 2350 && y <= 2460) {
     mapping = 6;
           
@@ -2980,7 +3040,7 @@ function toggleDiscord() {
     discordOff.style('width', '60px');
     discordOff.style('height', '40px');
     discordIframe.position(windowWidth/2 - 480,-36);
-    discordIframe.style('z-index', '100');
+    discordIframe.style('z-index', '1100');
     band.style('opacity','1');
     isDiscordVisible = true;
   }
@@ -3056,8 +3116,10 @@ function windowResized() {
   }
   if (commentInput) {
     commentInput.position(windowWidth/2 - 250, windowHeight/2 + 194, "absolute");
-
-
+  }
+  if (commentInput2) {
+    dialogueLicata.position(windowWidth/2 - 110 , 172 );
+    commentInput2.position(windowWidth/2 - 52 , 224 );
   }
   if (sendButton) {
     sendButton.position(windowWidth/2 - 250, windowHeight/2 + 310, "absolute");
