@@ -2620,7 +2620,7 @@ function map4Affichage() {
       sendButton2.style("font-family", "pkmndp");
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
-      sendButton2.mousePressed(tavernCounter(commentInput2.value()));
+      sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
     }
   } else {
   // Cacher ou supprimer le formulaire de commentaire
