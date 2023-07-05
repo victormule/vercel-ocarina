@@ -2560,7 +2560,7 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
-  const api_key_tavern = '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';
+  const api_key_tavern = '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';
 
   async function tavernCounter(playerMessage) {
       console.log(playerMessage);
