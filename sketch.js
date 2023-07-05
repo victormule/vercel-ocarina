@@ -2560,12 +2560,38 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
+  const api_key_tavern = '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';
+
+  async function tavernCounter(playerMessage) {
+      console.log(playerMessage);
+      const config = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${api_key_tavern}`,
+          },
+          body: JSON.stringify({
+              model: 'gpt-3.5-turbo',
+              messages: [
+                  { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+                  { role: 'user', content: `${playerMessage}` },
+              ],
+          }),
+      };
+
+      const response = await fetch('https://api.openai.com/v1/chat/completions', config);
+      const data = await response.json();
+      const npcResponse = data['choices'][0]['message']['content'];
+      console.log("GPT Response ===>", npcResponse);
+      return npcResponse;
+  }
+
   if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
     noTint();
     //image(dialogueLicata, 370, y -140 );
     image(licataFace, 550 +186, y +40);
     image(img30, 10 +186, y + 130);
-   
+  
     fill(30, 250);
     if (FR == 255) {
       text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
@@ -2594,7 +2620,7 @@ function map4Affichage() {
       sendButton2.style("font-family", "pkmndp");
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
-      sendButton2.mousePressed();
+      sendButton2.mousePressed(tavernCounter(commentInput2.value()));
     }
   } else {
   // Cacher ou supprimer le formulaire de commentaire
@@ -2608,11 +2634,13 @@ function map4Affichage() {
 
     }
   }
+
   //---Affichage hokusai---//
   if (x >= 110 && x <= 200 && y >= 2350 && y <= 2460) {
     mapping = 6;
           
   }
+
   if (x >= 280 && x <= 316 && y >= 2500 && y <= 2550) {
     noTint();
     image(hokusaiFace, 550+186, y +20);
@@ -3129,14 +3157,14 @@ function windowResized() {
     pseudoInput.position(windowWidth/2 - 250, windowHeight/2 + 160, "absolute");
     
     let commentairesDiv = select('#commentaires');
-     commentairesDiv.html('');commentairesDiv.position(windowWidth/2 - 20, windowHeight/2 + 162);
-     commentairesDiv.style("z-index: 1000");
-     commentairesDiv.style('background-color', 'rgba(255, 255, 255, 0');
-     commentairesDiv.style("overflow-y", "auto");
-     commentairesDiv.style("width", "270px");
-     commentairesDiv.style("height", "170px");
-     commentairesDiv.style("word-wrap", "break-word");
-     select('#commentaires').position(windowWidth/2 - 20, windowHeight/2 + 162);
+    commentairesDiv.html('');commentairesDiv.position(windowWidth/2 - 20, windowHeight/2 + 162);
+    commentairesDiv.style("z-index: 1000");
+    commentairesDiv.style('background-color', 'rgba(255, 255, 255, 0');
+    commentairesDiv.style("overflow-y", "auto");
+    commentairesDiv.style("width", "270px");
+    commentairesDiv.style("height", "170px");
+    commentairesDiv.style("word-wrap", "break-word");
+    select('#commentaires').position(windowWidth/2 - 20, windowHeight/2 + 162);
 
     
   }
