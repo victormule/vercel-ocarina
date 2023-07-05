@@ -2560,7 +2560,7 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
-  const api_key_tavern = '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';
+  const api_key_tavern = process.env.OPENAI_API_KEY;
 
   async function tavernCounter(playerMessage) {
       console.log(playerMessage);
