@@ -2608,6 +2608,7 @@ function map4Affichage() {
     fill(30, 250);
 
     if (!commentInput2) {
+      console.log(firstMeeting);
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
         npcResponseBox.style("font-family", "pkmndp");
@@ -2626,7 +2627,7 @@ function map4Affichage() {
       // Juste après que vous créez `npcResponseBox`
       if (firstMeeting) {
         if (FR == 255) {
-          npcResponseBox.html(npcText);
+          npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
         }
         if (EN == 255) {
           npcResponseBox.html(npcTextEN);
