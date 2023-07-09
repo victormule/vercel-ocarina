@@ -3251,7 +3251,7 @@ function windowResized() {
   }
 
     // Redimensionner la boite de dialogue licata
-    if (npcResponseBox && currentMap == 4) {
+    if (npcResponseBox && a == 4) {
       let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
       let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
   
