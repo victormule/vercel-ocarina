@@ -1830,6 +1830,10 @@ function draw() {
 // ⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣾⣿⠿⠿⠿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⠀⠀⣿⣿
 // ⢸⡇⠀⠀⠀⢠⠞⠓⢄⠀⠀⢀⣴⣿⡟⢱⢆⠀⠀⢀⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⡼⠀⠀⣿⣿
 // ⣸⡇⠀⢀⡴⠁⠀⠀⢀⣷⣿⣿⣿⣿⡀⠃⠈⠀⢀⢚⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⢀⡇⠀⠀⣿⣿
+// ⣿⣇⠔⠁⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢸⠀  ⣿⣿
+// ⣿⣿⣿⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄            ⠈⠻⣿⣦⡀ 
+
+
 
 
 ///MAP1 FONCTION///
@@ -2579,6 +2583,12 @@ function map4Affichage() {
       };
 
       const response = await fetch(`${BASE_URL_API}api/chat`, config);
+
+      if (!response.ok) {
+        console.error('API response was not OK', response);
+        return; // Ou gérer l'erreur d'une autre manière
+      }
+
       const data = await response.json();
       const npcResponse = data['message'];
       console.log("GPT Response ===>", npcResponse);
@@ -2597,7 +2607,7 @@ function map4Affichage() {
       // text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
       // text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
       // text("Et que me veux-tu étranger?", 476+186, y + 302);
-      text(npcText, 476+186, y + 230);
+      text(npcText, 476+186, y + 260);
     }
     if (EN == 255) {
       text("Since the developers settled here,", 476, y + 230);
@@ -2633,6 +2643,7 @@ function map4Affichage() {
         let i = 0;
         const intervalId = setInterval(() => {
           npcText = thinkingDots[i % 3]; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          redraw();
           i += 1;
         }, 500);
         
@@ -2643,6 +2654,7 @@ function map4Affichage() {
         
         // Affiche la réponse du PNJ
         npcText = npcResponse; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+        redraw();
       });
       
     }
