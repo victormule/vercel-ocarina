@@ -2623,19 +2623,6 @@ function map4Affichage() {
         npcResponseBox.style("padding-top", "5px");
         npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
       }
-  
-      // Juste après que vous créez `npcResponseBox`
-      if (firstMeeting) {
-        if (FR == 255) {
-          npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
-        }
-        if (EN == 255) {
-          npcResponseBox.html(npcTextEN);
-        }
-        firstMeeting = false;
-      } else {
-        npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
-      }
 
 
       dialogueLicata = createImg("assets/windowskinDialogue.png");
@@ -2682,6 +2669,19 @@ function map4Affichage() {
         npcResponseBox.html(npcText);
         redraw();
       });
+
+      // Juste après que vous créez `npcResponseBox`
+      if (firstMeeting) {
+        if (FR == 255) {
+          npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
+        }
+        if (EN == 255) {
+          npcResponseBox.html(npcTextEN);
+        }
+        firstMeeting = false;
+      } else {
+        npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
+      }
       
     }
   } else {
