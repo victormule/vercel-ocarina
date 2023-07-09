@@ -2545,7 +2545,7 @@ function map4Environnement(){
 }
 
 // ---- MAP4 GLOBAL VARIABLES ---- //
-let npcText = "Je connais le passé et le future de ce récit.\nNul n'a de secret pour moi! Pourtant...Qui es tu?\nEt que me veux-tu étranger?"; 
+let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?"; 
 let npcResponseBox;
 
 function map4Affichage() {
@@ -2611,22 +2611,22 @@ function map4Affichage() {
     //   // text("Et que me veux-tu étranger?", 476+186, y + 302);
     //   text(npcText, 476+186, y + 260);
     // }
+    if (!npcResponseBox) {
+      npcResponseBox = createElement('p');
+      npcResponseBox.position(715, 510);
+      npcResponseBox.style("font-family", "pkmndp");
+      npcResponseBox.style("font-size", "20px");
+      npcResponseBox.style("color", "#000000");
+      npcResponseBox.style("background-color", "#D9D9D9");
+      npcResponseBox.style("width", "540px"); // Change this to fit your needs
+      npcResponseBox.style("height", "105px"); // Change this to fit your needs
+      npcResponseBox.style("overflow", "auto");
+      npcResponseBox.style("z-index", "1000");
+      npcResponseBox.style("text-align", "center");
+      npcResponseBox.style("padding-top", "5px");
+    }
+    
     if (FR == 255) {
-      if (!npcResponseBox) {
-        npcResponseBox = createElement('p');
-        npcResponseBox.position(715, 510);
-        npcResponseBox.style("font-family", "pkmndp");
-        npcResponseBox.style("font-size", "20px");
-        npcResponseBox.style("color", "#000000");
-        npcResponseBox.style("background-color", "#D9D9D9");
-        npcResponseBox.style("width", "540px"); // Change this to fit your needs
-        npcResponseBox.style("height", "105px"); // Change this to fit your needs
-        npcResponseBox.style("overflow", "auto");
-        npcResponseBox.style("z-index", "1000");
-        npcResponseBox.style("text-align", "center");
-        npcResponseBox.style("padding-top", "5px");
-      }
-  
       npcResponseBox.html(npcText);
     }
     if (EN == 255) {
@@ -3263,7 +3263,7 @@ function langueENG(){
 }
 
 function wordWrap(str, maxWidth) {
-  var newLineStr = "\n"; 
+  var newLineStr = "<br/>"; 
   done = false; 
   res = '';
   while (str.length > maxWidth) {                 
