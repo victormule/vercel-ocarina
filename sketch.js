@@ -2544,6 +2544,8 @@ function map4Environnement(){
   image(licata1, 49, 2560);
 }
 
+let npcText = "Je connais le passé et le future de ce récit.\nNul n'a de secret pour moi! Pourtant...Qui es tu?\nEt que me veux-tu étranger?"; 
+
 function map4Affichage() {
         //---Affichage mama-san---//
   if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
@@ -2564,8 +2566,6 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
-  let npcText = "Je connais le passé et le future de ce récit.\nNul n'a de secret pour moi! Pourtant...Qui es tu?\nEt que me veux-tu étranger?";
-
   async function tavernCounter(playerMessage) {
       const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
       console.log(playerMessage);
