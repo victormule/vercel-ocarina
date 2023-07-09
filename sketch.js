@@ -2655,7 +2655,7 @@ function map4Affichage() {
         const thinkingDots = ['.', '..', '...'];
         let i = 0;
         const intervalId = setInterval(() => {
-          npcText = thinkingDots[i % 3]
+          npcText = `Laisse moi un instant que je trouve mes mots <br/>${thinkingDots[i % 3]}`
           npcResponseBox.html(npcText); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
           redraw();
           i += 1;
