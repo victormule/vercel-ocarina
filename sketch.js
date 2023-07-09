@@ -2560,31 +2560,27 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
-  const api_key_tavern = process.env.OPENAI_API_KEY;
-
   async function tavernCounter(playerMessage) {
+      const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
       console.log(playerMessage);
       const config = {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${api_key_tavern}`,
           },
-          body: JSON.stringify({
-              model: 'gpt-3.5-turbo',
-              messages: [
-                  { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
-                  { role: 'user', content: `${playerMessage}` },
-              ],
-          }),
+          body: JSON.stringify([
+              { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+              { role: 'user', content: `${playerMessage}` },
+          ]),
       };
 
-      const response = await fetch('https://api.openai.com/v1/chat/completions', config);
+      const response = await fetch(`${BASE_URL_API}api/chat`, config);
       const data = await response.json();
-      const npcResponse = data['choices'][0]['message']['content'];
+      const npcResponse = data['message'];
       console.log("GPT Response ===>", npcResponse);
       return npcResponse;
   }
+
 
   if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
     noTint();
@@ -2966,8 +2962,8 @@ function toggleMute() {
 
 ///COMMENTAIRE FONCTION///
 async function afficherCommentaires() {
-  const BASE_URL = "http://127.0.0.1:8000";
-  const response = await fetch(`${BASE_URL}/comment`);
+  const BASE_URL_API = "https://ocarina-api-244855f29b92.herokuapp.com";
+  const response = await fetch(`${BASE_URL_API}/comment`);
   const commentaires = await response.json();
   commentaires.sort((a, b) => new Date(b.date) - new Date(a.date));
   console.log(commentaires);
@@ -3011,7 +3007,7 @@ commentairesDiv.style("word-wrap", "break-word");
 function envoyerSaisies() {
 let author = pseudoInput.value();
 let commentaire = commentInput.value();
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL_API = "https://ocarina-api-244855f29b92.herokuapp.com";
 // const BASE_URL = "http://127.0.0.1:8000";
 if (author=="")
 {
@@ -3023,7 +3019,7 @@ const data= {
 }
 console.log(data)
 try {
-    const response = fetch(`${BASE_URL}/comment/create`, {
+    const response = fetch(`${BASE_URL_API}/comment/create`, {
         method: "POST",
         mode: "no-cors",
         headers: {
