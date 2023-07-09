@@ -3264,6 +3264,12 @@ function windowResized() {
       let newYPosition = Math.round((windowHeight * yPercentage) / 100);
   
       npcResponseBox.position(newXPosition, newYPosition);
+
+      console.log('windowWidth', windowWidth);
+      console.log('windowHeight', windowHeight);
+      console.log('xPercentage', xPercentage);
+      console.log('yPercentage', yPercentage);
+      console.log(newXPosition, newYPosition);
     }
   
 }
