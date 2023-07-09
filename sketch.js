@@ -3257,21 +3257,21 @@ function windowResized() {
   }
 
     // // Redimensionner la boite de dialogue licata
-    // if (npcResponseBox) {
+    if (npcResponseBox) {
     //   let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
     //   let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
   
     //   let newXPosition = Math.round((windowWidth * xPercentage) / 100);
     //   let newYPosition = Math.round((windowHeight * yPercentage) / 100);
   
-    //   npcResponseBox.position(newXPosition, newYPosition);
+      npcResponseBox.position(windowWidth/2 - 80 , windowHeight/2 + 130);
 
     //   console.log('windowWidth', windowWidth);
     //   console.log('windowHeight', windowHeight);
     //   console.log('xPercentage', xPercentage);
     //   console.log('yPercentage', yPercentage);
     //   console.log(newXPosition, newYPosition);
-    // }
+    }
   
 }
 ///LANGUE FONCTION///
