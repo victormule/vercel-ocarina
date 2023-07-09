@@ -2548,6 +2548,11 @@ let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de se
 let npcResponseBox;
 
 function map4Affichage() {
+
+  // call a fonction when a click on window is detected
+  window.onclick = function(event) {
+    displayWindowDimensions();
+  }
         //---Affichage mama-san---//
   if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
     noTint();
@@ -3305,5 +3310,12 @@ function wordWrap(str, maxWidth) {
   return res + str;
 }
 
+// une fonction qui permet d'afficher les dimensions de la fenêtre dans la console et la valeur de xPercentage et yPercentage
+function displayWindowDimensions() {
+  let windowWidthPercentage = Math.round((windowWidth * 100) / windowWidth);
+  let windowHeightPercentage = Math.round((windowHeight * 100) / windowHeight);
 
+  console.log("windowWidth: " + windowWidth + "px (" + windowWidthPercentage + "%)");
+  console.log("windowHeight: " + windowHeight + "px (" + windowHeightPercentage + "%)");
+}
 
