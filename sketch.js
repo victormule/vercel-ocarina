@@ -2582,7 +2582,7 @@ function map4Affichage() {
           },
           body: JSON.stringify({
             messages: [
-                { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+                { role: 'system', content: `Tu es Licata, un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
                 { role: 'user', content: `${playerMessage}` },
             ]
           }),
@@ -2628,7 +2628,7 @@ function map4Affichage() {
       npcResponseBox.style("z-index", "1000");
       npcResponseBox.style("text-align", "center");
       npcResponseBox.style("padding-top", "5px");
-      npcResponseBox.position(windowWidth/2 - 80 , windowHeight/2 + 130);
+      npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
 
       // let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
       // let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
@@ -3258,19 +3258,7 @@ function windowResized() {
 
     // // Redimensionner la boite de dialogue licata
     if (npcResponseBox) {
-    //   let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
-    //   let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
-  
-    //   let newXPosition = Math.round((windowWidth * xPercentage) / 100);
-    //   let newYPosition = Math.round((windowHeight * yPercentage) / 100);
-  
-      npcResponseBox.position(windowWidth/2 - 80 , windowHeight/2 + 130);
-
-    //   console.log('windowWidth', windowWidth);
-    //   console.log('windowHeight', windowHeight);
-    //   console.log('xPercentage', xPercentage);
-    //   console.log('yPercentage', yPercentage);
-    //   console.log(newXPosition, newYPosition);
+      npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
     }
   
 }
