@@ -2617,12 +2617,14 @@ function map4Affichage() {
         npcResponseBox.position(476+186, y + 260);
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "16px");
-        npcResponseBox.style("color", "#ffffff");
+        npcResponseBox.style("color", "#000000");
+        npcResponseBox.style("border", "solid 8px red")
         npcResponseBox.style("background-color", "rgba(0, 0, 0, 0.65)");
         npcResponseBox.style("width", "280px"); // Change this to fit your needs
         npcResponseBox.style("height", "180px"); // Change this to fit your needs
         npcResponseBox.style("overflow", "auto");
         npcResponseBox.style("z-index", "1000");
+        npcResponseBox.style("text-align", "center");
       }
   
       npcResponseBox.html(npcText);
@@ -2660,7 +2662,7 @@ function map4Affichage() {
         const thinkingDots = ['.', '..', '...'];
         let i = 0;
         const intervalId = setInterval(() => {
-          npcText = thinkingDots[i % 3]; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          npcResponseBox.html(thinkingDots[i % 3]); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
           redraw();
           i += 1;
         }, 500);
@@ -2673,7 +2675,7 @@ function map4Affichage() {
         // Affiche la réponse du PNJ
         let formattedText = wordWrap(npcResponse, 45); // ici, 50 est la longueur maximale d'une ligne
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
-        npcText = formattedText;
+        npcResponseBox.html(formattedText);
         redraw();
       });
       
