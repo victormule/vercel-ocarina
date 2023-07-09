@@ -285,7 +285,6 @@ function draw() {
   
   if (mapping == 1) {
     map1CharacterControl();
-   
     //---CADRE LIMITE---//
     if (x <= 64) {
       x += 5;
@@ -2414,7 +2413,7 @@ function map3Affichage() {
       image(bar5, 86, y + 120);
       image(bar5, 86, y + 220);
       image(bar8, 86, y + 320);
-      fill(255, 255);
+                 fill(255, 255);
     if (FR == 255) {
       text("AVANCEMENT DE LA DEMO", 204, y-250);
       text("Mapping", 204, y-200);
@@ -2458,7 +2457,7 @@ function laMule1() {
   } else if (y >= 2220 && y <= 2262 && x >= 526 && x <= 606){
     
   } else if (y >= 2198 && y <= 2238 && x >= 542 && x <= 608){
-
+   
   } else {
     image(lamule, 570,2230);
   }
@@ -2613,8 +2612,14 @@ function map4Affichage() {
     // }
     
     if (!npcResponseBox) {
+      let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
+      let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
+
+      let newXPosition = Math.round((windowWidth * xPercentage) / 100);
+      let newYPosition = Math.round((windowHeight * yPercentage) / 100);
+
       npcResponseBox = createElement('p');
-      windowResized(44.69, 68.27, npcResponseBox);
+      npcResponseBox.position(newXPosition, newYPosition);
       npcResponseBox.style("font-family", "pkmndp");
       npcResponseBox.style("font-size", "20px");
       npcResponseBox.style("color", "#000000");
@@ -2654,6 +2659,8 @@ function map4Affichage() {
       sendButton2.style("z-index", "1000");
       // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
       sendButton2.mousePressed(async () => {
+        console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
+        console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
@@ -3243,6 +3250,18 @@ function windowResized() {
   if (cachemisere) {
     cachemisere.position(windowWidth/2 +230, windowHeight/2 + 80, "absolute");
   }
+
+    // Redimensionner la boite de dialogue licata
+    if (npcResponseBox && currentMap == 4) {
+      let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
+      let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
+  
+      let newXPosition = Math.round((windowWidth * xPercentage) / 100);
+      let newYPosition = Math.round((windowHeight * yPercentage) / 100);
+  
+      npcResponseBox.position(newXPosition, newYPosition);
+    }
+  
 }
 ///LANGUE FONCTION///
 function langueFRA(){
@@ -3287,14 +3306,5 @@ function wordWrap(str, maxWidth) {
   return res + str;
 }
 
-function windowResized( xPercentage, yPercentage, textBox) {
-  let xPerc = xPercentage; // Le pourcentage de x que vous avez calculé
-  let yPerc = yPercentage; // Le pourcentage de y que vous avez calculé
-
-  let newXPosition = Math.round((windowWidth * xPerc) / 100);
-  let newYPosition = Math.round((windowHeight * yPerc) / 100);
-
-  textBox.position(newXPosition, newYPosition);
-}
 
 
