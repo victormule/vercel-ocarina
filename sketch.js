@@ -2463,6 +2463,7 @@ function laMule1() {
   }
 }
 
+
 ///MAP4 FONCTION///
 function map4CharacterControl() {
 
@@ -2548,6 +2549,34 @@ let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de se
 let npcTextEN = "I know the past and the future of this story.<br/>No one has a secret for me! Yet...Who are you?<br/>And what do you want from me stranger?";
 let npcResponseBox;
 let firstMeeting = true;
+async function tavernCounter(playerMessage) {
+  const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
+  console.log(playerMessage);
+  const config = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: [
+            { role: 'system', content: `Tu es Licata, un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+            { role: 'user', content: `${playerMessage}` },
+        ]
+      }),
+  };
+
+  const response = await fetch(`${BASE_URL_API}api/chat`, config);
+
+  if (!response.ok) {
+    console.error('API response was not OK', response);
+    return; // Ou gérer l'erreur d'une autre manière
+  }
+
+  const data = await response.json();
+  const npcResponse = data['message'];
+  console.log("GPT Response ===>", npcResponse);
+  return npcResponse;
+}
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2569,36 +2598,6 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
-  async function tavernCounter(playerMessage) {
-      const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
-      console.log(playerMessage);
-      const config = {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            messages: [
-                { role: 'system', content: `Tu es Licata, un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
-                { role: 'user', content: `${playerMessage}` },
-            ]
-          }),
-      };
-
-      const response = await fetch(`${BASE_URL_API}api/chat`, config);
-
-      if (!response.ok) {
-        console.error('API response was not OK', response);
-        return; // Ou gérer l'erreur d'une autre manière
-      }
-
-      const data = await response.json();
-      const npcResponse = data['message'];
-      console.log("GPT Response ===>", npcResponse);
-      return npcResponse;
-  }
-
-
   if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
     noTint();
     //image(dialogueLicata, 370, y -140 );
@@ -2669,21 +2668,21 @@ function map4Affichage() {
         npcResponseBox.html(npcText);
         redraw();
       });
-    }
 
-    // Juste après que vous créez `npcResponseBox`
-    if (firstMeeting) {
-      if (FR == 255) {
-        npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
+      // Juste après que vous créez `npcResponseBox`
+      if (firstMeeting) {
+        if (FR == 255) {
+          npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
+        }
+        if (EN == 255) {
+          npcResponseBox.html(npcTextEN);
+        }
+        firstMeeting = false;
+      } else {
+        npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
       }
-      if (EN == 255) {
-        npcResponseBox.html(npcTextEN);
-      }
-      firstMeeting = false;
-    } else {
-      npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
-    }
 
+    }
   } else {
   // Cacher ou supprimer le formulaire de commentaire
     if (commentInput2) {
