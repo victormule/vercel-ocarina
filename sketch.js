@@ -2599,8 +2599,6 @@ function map4Affichage() {
 
 
   if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
-    console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
-    console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
     noTint();
     //image(dialogueLicata, 370, y -140 );
     image(licataFace, 550 +186, y +40);
@@ -2655,6 +2653,8 @@ function map4Affichage() {
       sendButton2.style("z-index", "1000");
       // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
       sendButton2.mousePressed(async () => {
+        console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
+        console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
