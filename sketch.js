@@ -2545,6 +2545,7 @@ function map4Environnement(){
 
 // ---- MAP4 GLOBAL VARIABLES ---- //
 let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?"; 
+let npcTextEN = "I know the past and the future of this story.<br/>No one has a secret for me! Yet...Who are you?<br/>And what do you want from me stranger?";
 let npcResponseBox;
 
 function map4Affichage() {
@@ -2605,30 +2606,29 @@ function map4Affichage() {
   
     fill(30, 250);
 
-    if (!npcResponseBox) {
-      npcResponseBox = createElement('p');
-      npcResponseBox.style("font-family", "pkmndp");
-      npcResponseBox.style("font-size", "20px");
-      npcResponseBox.style("color", "#000000");
-      npcResponseBox.style("background-color", "#D9D9D9");
-      npcResponseBox.style("width", "540px"); // Change this to fit your needs
-      npcResponseBox.style("height", "105px"); // Change this to fit your needs
-      npcResponseBox.style("overflow", "auto");
-      npcResponseBox.style("z-index", "1000");
-      npcResponseBox.style("text-align", "center");
-      npcResponseBox.style("padding-top", "5px");
-      npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
-    }
-
-    if (FR == 255) {
-      npcResponseBox.html(npcText);
-    }
-    if (EN == 255) {
-      text("Since the developers settled here,", 476, y + 230);
-      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
-      text("And that's good for business!", 476, y + 302);
-    }
     if (!commentInput2) {
+      if (!npcResponseBox) {
+        npcResponseBox = createElement('p');
+        npcResponseBox.style("font-family", "pkmndp");
+        npcResponseBox.style("font-size", "20px");
+        npcResponseBox.style("color", "#000000");
+        npcResponseBox.style("background-color", "#D9D9D9");
+        npcResponseBox.style("width", "540px"); // Change this to fit your needs
+        npcResponseBox.style("height", "105px"); // Change this to fit your needs
+        npcResponseBox.style("overflow", "auto");
+        npcResponseBox.style("z-index", "1000");
+        npcResponseBox.style("text-align", "center");
+        npcResponseBox.style("padding-top", "5px");
+        npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
+      }
+  
+      if (FR == 255) {
+        npcResponseBox.html(npcText);
+      }
+      if (EN == 255) {
+        npcResponseBox.html(npcTextEN);
+      }
+
       dialogueLicata = createImg("assets/windowskinDialogue.png");
       dialogueLicata.position(windowWidth/2 - 110 , 172 );
       dialogueLicata.style("z-index", "800");
