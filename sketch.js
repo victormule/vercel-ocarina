@@ -2628,7 +2628,7 @@ function map4Affichage() {
       npcResponseBox.style("z-index", "1000");
       npcResponseBox.style("text-align", "center");
       npcResponseBox.style("padding-top", "5px");
-      npcResponseBox.position(windowWidth/2 - 110 , windowHeight/2 + 100);
+      npcResponseBox.position(windowWidth/2 - 80 , windowHeight/2 + 130);
 
       // let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
       // let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
