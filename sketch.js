@@ -2599,6 +2599,8 @@ function map4Affichage() {
 
 
   if (y >= 2520 && y <= 2600 && x >= 0 && x <= 90){
+    console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
+    console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
     noTint();
     //image(dialogueLicata, 370, y -140 );
     image(licataFace, 550 +186, y +40);
@@ -2625,7 +2627,7 @@ function map4Affichage() {
       npcResponseBox.style("text-align", "center");
       npcResponseBox.style("padding-top", "5px");
     }
-    
+
     if (FR == 255) {
       npcResponseBox.html(npcText);
     }
