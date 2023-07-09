@@ -2544,7 +2544,9 @@ function map4Environnement(){
   image(licata1, 49, 2560);
 }
 
+// ---- MAP4 GLOBAL VARIABLES ---- //
 let npcText = "Je connais le passé et le future de ce récit.\nNul n'a de secret pour moi! Pourtant...Qui es tu?\nEt que me veux-tu étranger?"; 
+let npcResponseBox;
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2603,11 +2605,27 @@ function map4Affichage() {
     image(img30, 10 +186, y + 130);
   
     fill(30, 250);
+    // if (FR == 255) {
+    //   // text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
+    //   // text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
+    //   // text("Et que me veux-tu étranger?", 476+186, y + 302);
+    //   text(npcText, 476+186, y + 260);
+    // }
     if (FR == 255) {
-      // text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
-      // text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
-      // text("Et que me veux-tu étranger?", 476+186, y + 302);
-      text(npcText, 476+186, y + 260);
+      if (!npcResponseBox) {
+        npcResponseBox = createElement('p');
+        npcResponseBox.position(476+186, y + 260);
+        npcResponseBox.style("font-family", "pkmndp");
+        npcResponseBox.style("font-size", "16px");
+        npcResponseBox.style("color", "#ffffff");
+        npcResponseBox.style("background-color", "rgba(0, 0, 0, 0.65)");
+        npcResponseBox.style("width", "280px"); // Change this to fit your needs
+        npcResponseBox.style("height", "180px"); // Change this to fit your needs
+        npcResponseBox.style("overflow", "auto");
+        npcResponseBox.style("z-index", "1000");
+      }
+  
+      npcResponseBox.html(npcText);
     }
     if (EN == 255) {
       text("Since the developers settled here,", 476, y + 230);
