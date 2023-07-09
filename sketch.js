@@ -2544,8 +2544,9 @@ function map4Environnement(){
 }
 
 // ---- MAP4 GLOBAL VARIABLES ---- //
-let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?"; 
+let npcText; 
 let npcResponseBox;
+let isFirstTime = true;
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2620,6 +2621,12 @@ function map4Affichage() {
       npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
     }
 
+    if (isFirstTime) {
+      npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?";
+    } else {
+      npcText = "Te revoilà ! Que puis-je faire pour toi ?";
+    }
+
     if (FR == 255) {
       npcResponseBox.html(npcText);
     }
@@ -2646,6 +2653,9 @@ function map4Affichage() {
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
       sendButton2.mousePressed(async () => {
+
+        isFirstTime = false;
+        
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
@@ -2685,7 +2695,6 @@ function map4Affichage() {
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
-      npcText = "Te revoilà ! Que puis-je faire pour toi ?"
     }
   }
 
