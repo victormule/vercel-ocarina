@@ -2642,7 +2642,8 @@ function map4Affichage() {
         text(npcResponse, 476+186, y + 230); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
       });
       
-    } else {
+    }
+  } else {
   // Cacher ou supprimer le formulaire de commentaire
     if (commentInput2) {
       commentInput2.remove();
@@ -3223,5 +3224,4 @@ function langueENG(){
     FR = 150;
     EN = 255;
   }
-}
 }
