@@ -2654,8 +2654,6 @@ function map4Affichage() {
       sendButton2.style("z-index", "1000");
       sendButton2.mousePressed(async () => {
 
-        isFirstTime = false;
-        
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
@@ -2695,6 +2693,7 @@ function map4Affichage() {
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
+      isFirstTime = false;
     }
   }
 
