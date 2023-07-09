@@ -2614,13 +2614,13 @@ function map4Affichage() {
     if (FR == 255) {
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
-        npcResponseBox.position(710, 510);
+        npcResponseBox.position(715, 510);
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "20px");
         npcResponseBox.style("color", "#000000");
-        npcResponseBox.style("background-color", "#f5f3f3");
+        npcResponseBox.style("background-color", "#D9D9D9");
         npcResponseBox.style("width", "540px"); // Change this to fit your needs
-        npcResponseBox.style("height", "110px"); // Change this to fit your needs
+        npcResponseBox.style("height", "105px"); // Change this to fit your needs
         npcResponseBox.style("overflow", "auto");
         npcResponseBox.style("z-index", "1000");
         npcResponseBox.style("text-align", "center");
