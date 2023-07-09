@@ -2568,10 +2568,12 @@ function map4Affichage() {
           headers: {
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify([
-              { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
-              { role: 'user', content: `${playerMessage}` },
-          ]),
+          body: JSON.stringify({
+            messages: [
+                { role: 'system', content: `Tu es un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+                { role: 'user', content: `${playerMessage}` },
+            ]
+          }),
       };
 
       const response = await fetch(`${BASE_URL_API}api/chat`, config);
