@@ -2548,11 +2548,6 @@ let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de se
 let npcResponseBox;
 
 function map4Affichage() {
-
-  // call a fonction when a click on window is detected
-  window.onclick = function(event) {
-    displayWindowDimensions();
-  }
         //---Affichage mama-san---//
   if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
     noTint();
@@ -2609,13 +2604,7 @@ function map4Affichage() {
     image(img30, 10 +186, y + 130);
   
     fill(30, 250);
-    // if (FR == 255) {
-    //   // text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
-    //   // text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
-    //   // text("Et que me veux-tu étranger?", 476+186, y + 302);
-    //   text(npcText, 476+186, y + 260);
-    // }
-    
+
     if (!npcResponseBox) {
       npcResponseBox = createElement('p');
       npcResponseBox.style("font-family", "pkmndp");
@@ -2629,14 +2618,6 @@ function map4Affichage() {
       npcResponseBox.style("text-align", "center");
       npcResponseBox.style("padding-top", "5px");
       npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
-
-      // let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
-      // let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
-
-      // let newXPosition = Math.round((windowWidth * xPercentage) / 100);
-      // let newYPosition = Math.round((windowHeight * yPercentage) / 100);
-
-      // npcResponseBox.position(newXPosition, newYPosition);
     }
 
     if (FR == 255) {
@@ -2664,7 +2645,6 @@ function map4Affichage() {
       sendButton2.style("font-family", "pkmndp");
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
-      // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
       sendButton2.mousePressed(async () => {
         const playerMessage = commentInput2.value();
         
@@ -2687,7 +2667,7 @@ function map4Affichage() {
         clearInterval(intervalId);
         
         // Affiche la réponse du PNJ
-        let formattedText = wordWrap(npcResponse, 45); // ici, 50 est la longueur maximale d'une ligne
+        let formattedText = wordWrap(npcResponse, 65); // ici, 50 est la longueur maximale d'une ligne
         npcText = formattedText;
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
         npcResponseBox.html(npcText);
