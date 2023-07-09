@@ -2671,6 +2671,7 @@ function map4Affichage() {
 
       // Juste après que vous créez `npcResponseBox`
       if (firstMeeting) {
+        console.log('First meeting'); 
         if (FR == 255) {
           npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
         }
@@ -2679,6 +2680,7 @@ function map4Affichage() {
         }
         firstMeeting = false;
       } else {
+        console.log('Not first meeting');
         npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
       }
 
@@ -2690,6 +2692,7 @@ function map4Affichage() {
       sendButton2.remove();
       dialogueLicata.remove();
       npcResponseBox.remove();
+      npcResponseBox = null;
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
