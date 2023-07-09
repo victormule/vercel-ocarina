@@ -2681,6 +2681,7 @@ function map4Affichage() {
       commentInput2.remove();
       sendButton2.remove();
       dialogueLicata.remove();
+      npcResponseBox.remove();
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
