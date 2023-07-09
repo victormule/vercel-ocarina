@@ -2414,7 +2414,7 @@ function map3Affichage() {
       image(bar5, 86, y + 120);
       image(bar5, 86, y + 220);
       image(bar8, 86, y + 320);
-                 fill(255, 255);
+      fill(255, 255);
     if (FR == 255) {
       text("AVANCEMENT DE LA DEMO", 204, y-250);
       text("Mapping", 204, y-200);
@@ -2458,7 +2458,7 @@ function laMule1() {
   } else if (y >= 2220 && y <= 2262 && x >= 526 && x <= 606){
     
   } else if (y >= 2198 && y <= 2238 && x >= 542 && x <= 608){
-   
+
   } else {
     image(lamule, 570,2230);
   }
@@ -2611,9 +2611,10 @@ function map4Affichage() {
     //   // text("Et que me veux-tu étranger?", 476+186, y + 302);
     //   text(npcText, 476+186, y + 260);
     // }
+    
     if (!npcResponseBox) {
       npcResponseBox = createElement('p');
-      npcResponseBox.position(715, 510);
+      windowResized(44.69, 68.27, npcResponseBox);
       npcResponseBox.style("font-family", "pkmndp");
       npcResponseBox.style("font-size", "20px");
       npcResponseBox.style("color", "#000000");
@@ -2653,8 +2654,6 @@ function map4Affichage() {
       sendButton2.style("z-index", "1000");
       // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
       sendButton2.mousePressed(async () => {
-        console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
-        console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
@@ -3287,4 +3286,15 @@ function wordWrap(str, maxWidth) {
   }
   return res + str;
 }
+
+function windowResized( xPercentage, yPercentage, textBox) {
+  let xPerc = xPercentage; // Le pourcentage de x que vous avez calculé
+  let yPerc = yPercentage; // Le pourcentage de y que vous avez calculé
+
+  let newXPosition = Math.round((windowWidth * xPerc) / 100);
+  let newYPosition = Math.round((windowHeight * yPerc) / 100);
+
+  textBox.position(newXPosition, newYPosition);
+}
+
 
