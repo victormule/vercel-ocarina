@@ -2618,9 +2618,31 @@ function map4Affichage() {
       sendButton2.style("font-family", "pkmndp");
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
-      sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
-    }
-  } else {
+      // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
+      sendButton2.mousePressed(async () => {
+        const playerMessage = commentInput2.value();
+        
+        // Vider le champ de texte après l'envoi
+        commentInput2.value('');
+        
+        // Affiche trois points de suspension en alternance pendant que le PNJ "réfléchit"
+        const thinkingDots = ['.', '..', '...'];
+        let i = 0;
+        const intervalId = setInterval(() => {
+          text(thinkingDots[i % 3], 476+186, y + 230); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          i += 1;
+        }, 500);
+        
+        const npcResponse = await tavernCounter(playerMessage);
+        
+        // Arrête l'affichage des points de suspension une fois que le PNJ a fini de "réfléchir"
+        clearInterval(intervalId);
+        
+        // Affiche la réponse du PNJ
+        text(npcResponse, 476+186, y + 230); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+      });
+      
+    } else {
   // Cacher ou supprimer le formulaire de commentaire
     if (commentInput2) {
       commentInput2.remove();
@@ -3201,4 +3223,5 @@ function langueENG(){
     FR = 150;
     EN = 255;
   }
+}
 }
