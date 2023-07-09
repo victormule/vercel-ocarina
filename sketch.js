@@ -2628,14 +2628,15 @@ function map4Affichage() {
       npcResponseBox.style("z-index", "1000");
       npcResponseBox.style("text-align", "center");
       npcResponseBox.style("padding-top", "5px");
+      npcResponseBox.position(windowWidth/2 - 110 , windowHeight/2 + 100);
 
-      let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
-      let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
+      // let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
+      // let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
 
-      let newXPosition = Math.round((windowWidth * xPercentage) / 100);
-      let newYPosition = Math.round((windowHeight * yPercentage) / 100);
+      // let newXPosition = Math.round((windowWidth * xPercentage) / 100);
+      // let newYPosition = Math.round((windowHeight * yPercentage) / 100);
 
-      npcResponseBox.position(newXPosition, newYPosition);
+      // npcResponseBox.position(newXPosition, newYPosition);
     }
 
     if (FR == 255) {
@@ -3255,22 +3256,22 @@ function windowResized() {
     cachemisere.position(windowWidth/2 +230, windowHeight/2 + 80, "absolute");
   }
 
-    // Redimensionner la boite de dialogue licata
-    if (npcResponseBox) {
-      let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
-      let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
+    // // Redimensionner la boite de dialogue licata
+    // if (npcResponseBox) {
+    //   let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
+    //   let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
   
-      let newXPosition = Math.round((windowWidth * xPercentage) / 100);
-      let newYPosition = Math.round((windowHeight * yPercentage) / 100);
+    //   let newXPosition = Math.round((windowWidth * xPercentage) / 100);
+    //   let newYPosition = Math.round((windowHeight * yPercentage) / 100);
   
-      npcResponseBox.position(newXPosition, newYPosition);
+    //   npcResponseBox.position(newXPosition, newYPosition);
 
-      console.log('windowWidth', windowWidth);
-      console.log('windowHeight', windowHeight);
-      console.log('xPercentage', xPercentage);
-      console.log('yPercentage', yPercentage);
-      console.log(newXPosition, newYPosition);
-    }
+    //   console.log('windowWidth', windowWidth);
+    //   console.log('windowHeight', windowHeight);
+    //   console.log('xPercentage', xPercentage);
+    //   console.log('yPercentage', yPercentage);
+    //   console.log(newXPosition, newYPosition);
+    // }
   
 }
 ///LANGUE FONCTION///
