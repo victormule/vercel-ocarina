@@ -2653,7 +2653,9 @@ function map4Affichage() {
         clearInterval(intervalId);
         
         // Affiche la réponse du PNJ
-        npcText = npcResponse; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+        let formattedText = wordWrap(npcResponse, 45); // ici, 50 est la longueur maximale d'une ligne
+        // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+        npcText = formattedText;
         redraw();
       });
       
@@ -2667,7 +2669,7 @@ function map4Affichage() {
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
-
+      npcText = "Te revoilà ! Que puis-je faire pour toi ?"
     }
   }
 
@@ -3239,3 +3241,28 @@ function langueENG(){
     EN = 255;
   }
 }
+
+function wordWrap(str, maxWidth) {
+  var newLineStr = "\n"; 
+  done = false; 
+  res = '';
+  while (str.length > maxWidth) {                 
+      found = false;
+      // Cherche l'espace le plus proche du "maxWidth"
+      for (i = maxWidth - 1; i >= 0; i--) {
+          if (str[i] === ' ') {
+              res = res + [str.slice(0, i), newLineStr].join('');
+              str = str.slice(i + 1);
+              found = true;
+              break;
+          }
+      }
+      // Si aucun espace n'est trouvé, on coupe le texte au "maxWidth"
+      if (!found) {
+          res += [str.slice(0, maxWidth), newLineStr].join('');
+          str = str.slice(maxWidth);
+      }
+  }
+  return res + str;
+}
+
