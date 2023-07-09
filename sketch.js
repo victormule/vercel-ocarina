@@ -2547,6 +2547,7 @@ function map4Environnement(){
 let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?"; 
 let npcTextEN = "I know the past and the future of this story.<br/>No one has a secret for me! Yet...Who are you?<br/>And what do you want from me stranger?";
 let npcResponseBox;
+let firstMeeting = true;
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2622,12 +2623,19 @@ function map4Affichage() {
         npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
       }
   
-      if (FR == 255) {
-        npcResponseBox.html(npcText);
+      // Juste après que vous créez `npcResponseBox`
+      if (firstMeeting) {
+        if (FR == 255) {
+          npcResponseBox.html(npcText);
+        }
+        if (EN == 255) {
+          npcResponseBox.html(npcTextEN);
+        }
+        firstMeeting = false;
+      } else {
+        npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
       }
-      if (EN == 255) {
-        npcResponseBox.html(npcTextEN);
-      }
+
 
       dialogueLicata = createImg("assets/windowskinDialogue.png");
       dialogueLicata.position(windowWidth/2 - 110 , 172 );
