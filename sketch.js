@@ -2612,14 +2612,7 @@ function map4Affichage() {
     // }
     
     if (!npcResponseBox) {
-      let xPercentage = 44.69; // Le pourcentage de x que vous avez calculé
-      let yPercentage = 68.27; // Le pourcentage de y que vous avez calculé
-
-      let newXPosition = Math.round((windowWidth * xPercentage) / 100);
-      let newYPosition = Math.round((windowHeight * yPercentage) / 100);
-
       npcResponseBox = createElement('p');
-      npcResponseBox.position(newXPosition, newYPosition);
       npcResponseBox.style("font-family", "pkmndp");
       npcResponseBox.style("font-size", "20px");
       npcResponseBox.style("color", "#000000");
@@ -2659,8 +2652,6 @@ function map4Affichage() {
       sendButton2.style("z-index", "1000");
       // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
       sendButton2.mousePressed(async () => {
-        console.log("Largeur de l'écran: " + window.innerWidth + " pixels");
-        console.log("Hauteur de l'écran: " + window.innerHeight + " pixels");
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
