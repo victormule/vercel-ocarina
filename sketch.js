@@ -2560,6 +2560,8 @@ function map4Affichage() {
     
   }
   //---Affichage licata---//
+  let npcText = "Je connais le passé et le future de ce récit.\nNul n'a de secret pour moi! Pourtant...Qui es tu?\nEt que me veux-tu étranger?";
+
   async function tavernCounter(playerMessage) {
       const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
       console.log(playerMessage);
@@ -2592,9 +2594,10 @@ function map4Affichage() {
   
     fill(30, 250);
     if (FR == 255) {
-      text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
-      text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
-      text("Et que me veux-tu étranger?", 476+186, y + 302);
+      // text("Je connais le passé et le future de ce récit.", 476+186, y + 230);
+      // text("Nul n'a de secret pour moi! Pourtant...Qui es tu?", 476+186, y + 266);
+      // text("Et que me veux-tu étranger?", 476+186, y + 302);
+      text(npcText, 476+186, y + 230);
     }
     if (EN == 255) {
       text("Since the developers settled here,", 476, y + 230);
@@ -2618,7 +2621,30 @@ function map4Affichage() {
       sendButton2.style("font-family", "pkmndp");
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
-      sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
+      // sendButton2.mousePressed(() => tavernCounter(commentInput2.value()));
+      sendButton2.mousePressed(async () => {
+        const playerMessage = commentInput2.value();
+        
+        // Vider le champ de texte après l'envoi
+        commentInput2.value('');
+        
+        // Affiche trois points de suspension en alternance pendant que le PNJ "réfléchit"
+        const thinkingDots = ['.', '..', '...'];
+        let i = 0;
+        const intervalId = setInterval(() => {
+          npcText = thinkingDots[i % 3]; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          i += 1;
+        }, 500);
+        
+        const npcResponse = await tavernCounter(playerMessage);
+        
+        // Arrête l'affichage des points de suspension une fois que le PNJ a fini de "réfléchir"
+        clearInterval(intervalId);
+        
+        // Affiche la réponse du PNJ
+        npcText = npcResponse; // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+      });
+      
     }
   } else {
   // Cacher ou supprimer le formulaire de commentaire
@@ -2731,7 +2757,6 @@ function openchest() {
     bruitage1.play();
     if (millisStart === -1) {
       millisStart = millis();
-     
     }
     if (millis() - millisStart >= 200) {
       bruitage4.play();
