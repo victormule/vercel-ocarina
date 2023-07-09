@@ -2675,7 +2675,8 @@ function map4Affichage() {
         const thinkingDots = ['.', '..', '...'];
         let i = 0;
         const intervalId = setInterval(() => {
-          npcResponseBox.html(thinkingDots[i % 3]); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          npcText = thinkingDots[i % 3]
+          npcResponseBox.html(npcText); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
           redraw();
           i += 1;
         }, 500);
@@ -2687,8 +2688,9 @@ function map4Affichage() {
         
         // Affiche la réponse du PNJ
         let formattedText = wordWrap(npcResponse, 45); // ici, 50 est la longueur maximale d'une ligne
+        npcText = formattedText;
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
-        npcResponseBox.html(formattedText);
+        npcResponseBox.html(npcText);
         redraw();
       });
       
