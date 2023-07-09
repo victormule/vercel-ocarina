@@ -2670,6 +2670,20 @@ function map4Affichage() {
         redraw();
       });
     }
+
+    // Juste après que vous créez `npcResponseBox`
+    if (firstMeeting) {
+      if (FR == 255) {
+        npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
+      }
+      if (EN == 255) {
+        npcResponseBox.html(npcTextEN);
+      }
+      firstMeeting = false;
+    } else {
+      npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
+    }
+
   } else {
   // Cacher ou supprimer le formulaire de commentaire
     if (commentInput2) {
@@ -2683,23 +2697,9 @@ function map4Affichage() {
     }
   }
 
-  // Juste après que vous créez `npcResponseBox`
-  if (firstMeeting) {
-    if (FR == 255) {
-      npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
-    }
-    if (EN == 255) {
-      npcResponseBox.html(npcTextEN);
-    }
-    firstMeeting = false;
-  } else {
-    npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
-  }
-
   //---Affichage hokusai---//
   if (x >= 110 && x <= 200 && y >= 2350 && y <= 2460) {
     mapping = 6;
-          
   }
 
   if (x >= 280 && x <= 316 && y >= 2500 && y <= 2550) {
