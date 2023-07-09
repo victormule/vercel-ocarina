@@ -2544,9 +2544,8 @@ function map4Environnement(){
 }
 
 // ---- MAP4 GLOBAL VARIABLES ---- //
-let npcText; 
+let npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?"; 
 let npcResponseBox;
-let isFirstTime = true;
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2621,22 +2620,15 @@ function map4Affichage() {
       npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
     }
 
+    if (FR == 255) {
+      npcResponseBox.html(npcText);
+    }
+    if (EN == 255) {
+      text("Since the developers settled here,", 476, y + 230);
+      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
+      text("And that's good for business!", 476, y + 302);
+    }
     if (!commentInput2) {
-      if (isFirstTime) {
-        npcText = "Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?";
-      } else {
-        npcText = "Te revoilà ! Que puis-je faire pour toi ?";
-      }
-  
-      if (FR == 255) {
-        npcResponseBox.html(npcText);
-      }
-      if (EN == 255) {
-        text("Since the developers settled here,", 476, y + 230);
-        text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
-        text("And that's good for business!", 476, y + 302);
-      }
-      
       dialogueLicata = createImg("assets/windowskinDialogue.png");
       dialogueLicata.position(windowWidth/2 - 110 , 172 );
       dialogueLicata.style("z-index", "800");
@@ -2654,7 +2646,6 @@ function map4Affichage() {
       commentInput2.style('opacity', '0.65');
       sendButton2.style("z-index", "1000");
       sendButton2.mousePressed(async () => {
-
         const playerMessage = commentInput2.value();
         
         // Vider le champ de texte après l'envoi
@@ -2694,7 +2685,6 @@ function map4Affichage() {
       commentInput2 = null;
       sendButton2 = null;
       dialogueLicata = null;
-      isFirstTime = false;
     }
   }
 
