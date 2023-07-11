@@ -124,6 +124,9 @@ function preload() {
   img28 = loadImage("assets/LaMule.png");
   img29 = loadImage("assets/windowskin8.png");
   img30 = loadImage("assets/windowskin9.png");
+  windowHokusai = loadImage("assets/windowskinHokusai.png");
+  windowAkim = loadImage("assets/windowskinAkim.png");
+  windowLicata = loadImage("assets/windowskinLicata.png");
   img31 =  loadImage("assets/mamasan.gif")
   teinte = loadImage("assets/teinte.png");
   teinte2 = loadImage("assets/teinte2.png");
@@ -2013,7 +2016,7 @@ function map1Affichage() {
     if (y >= 2780 && y <= 3000 && x >= 410 && x <= 500) {
       noTint();
       image(bucheronFace, 554, y + 46);
-      image(img25, 10, y + 130);
+      image(windowAkim, 10, y + 130);
   
       fill(30, 250);
       if (FR == 255) {
@@ -2612,7 +2615,7 @@ async function tavernCounter(playerMessage) {
           
                                       Le jeu sera bientôt téléchargeable,
                                       Au sud de la plaine, en dehors de la taverne.
-                                      Un bucheron y travail ardemment.
+                                      Un bûcheron y travail ardemment.
 
                                       Reste mystérieux et poétique dans tes réponses.
                                       Tu repond uniquement par des haikus de trois phrases.
@@ -2660,7 +2663,7 @@ function map4Affichage() {
     noTint();
     //image(dialogueLicata, 370, y -140 );
     image(licataFace, 550 +186, y +40);
-    image(img30, 10 +186, y + 130);
+    image(windowLicata, 10 +186, y + 130);
   
     fill(30, 250);
 
@@ -2777,7 +2780,7 @@ function map4Affichage() {
   if (x >= 280 && x <= 316 && y >= 2500 && y <= 2550) {
     noTint();
     image(hokusaiFace, 550+186, y +20);
-    image(img30, 10+186, y + 130);
+    image(windowHokusai, 10+186, y + 130);
     fill(30, 250);
     if (FR == 255) {
       text("Avec Queulorior nous avons parcouru", 476+186, y + 230);
