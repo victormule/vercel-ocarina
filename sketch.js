@@ -10,7 +10,7 @@ let o = -400;
 let u = 0;
 let t = 0;
 let x = 260;
-let y = 590;
+let y = 600;
 let z = 200;
 let Z = 0.2;
 let a = 1;
@@ -62,6 +62,9 @@ function preload() {
   song3 = loadSound("assets/DistantRoads.mp3");
   bg = loadImage("assets/plaine.gif");
   ch = loadImage("assets/chambre.png");
+  chambre1 = loadImage("assets/chambre1.png");
+  chambre2 = loadImage("assets/chambre2.png");
+  chambre3 = loadImage("assets/chambre3.png");
   temple = loadImage("assets/temple.png");
   temple2 = loadImage("assets/temple2.gif");
   temple3 = loadImage("assets/templefeu.gif");
@@ -278,7 +281,7 @@ function draw() {
   let cnv = createCanvas(960, 3400);
   cnv.position(0, N, "relative");
   currentTime = hour();
-
+ console.log(x,y);
   if (isMuted) {
     sliderPosition = 0;
     gainSlider.value(sliderPosition);  
@@ -1368,6 +1371,7 @@ function draw() {
       oldwoman.reset();
       hokusai.reset();
       hokusai1.reset();
+      licataFace.reset();
       taverne2.reset();
       song.playMode("sustain");
       song.pause();
@@ -1403,6 +1407,106 @@ function draw() {
       y -= 5;
     }
 
+    //---lit---///
+
+    if (x >= 362 && x <= 420 && y >= 694 && y <= 705) {
+      x += 5;
+    }
+    if (x >= 354 && x <= 410 && y >= 694 && y <= 705) {
+      x -= 5;
+    }
+    if (x >= 362 && x <= 410 && y >= 694 && y <= 712) {
+      y += 5;
+      
+    }
+    if (x >= 362 && x <= 410 && y >= 682 && y <= 705) {
+      y -= 5;
+     
+    }
+
+    //---table---///
+
+    if (x >= 145 && x <= 225 && y >= 600 && y <= 640) {
+      x += 5;
+    }
+    if (x >= 135 && x <= 215 && y >= 600 && y <= 640) {
+      x -= 5;
+    }
+    if (x >= 145 && x <= 215 && y >= 600 && y <= 650) {
+      y += 5;
+          
+    }
+    if (x >= 145 && x <= 215 && y >= 590 && y <= 640) {
+      y -= 5;
+         
+    }
+
+     //---enclos maison sud---///
+
+    if (x >= 370 && x <= 600 && y >= 620 && y <= 620) {
+      x += 5;
+    }
+    if (x >= 355 && x <= 600 && y >= 620 && y <= 620) {
+      x -= 5;
+    }
+    if (x >= 370 && x <= 600 && y >= 620 && y <= 626) {
+      y += 5;
+          
+    }
+    if (x >= 370 && x <= 600 && y >= 606 && y <= 620) {
+      y -= 5;
+         
+    }
+
+    //---enclos maison sud2---///
+
+    if (x >= 280 && x <= 350 && y >= 580 && y <= 590) {
+      x += 5;
+    }
+    if (x >= 270 && x <= 340 && y >= 580 && y <= 590) {
+      x -= 5;
+    }
+    if (x >= 280 && x <= 340 && y >= 580 && y <= 600) {
+      y += 5;
+          
+    }
+    if (x >= 280 && x <= 340 && y >= 560 && y <= 590) {
+      y -= 5;
+         
+    }
+
+    //---enclos maison ouest---///
+
+    if (x >= 280 && x <= 296 && y >= 200 && y <= 590) {
+      x += 5;
+    }
+    if (x >= 270 && x <= 280 && y >= 200 && y <= 590) {
+      x -= 5;
+    }
+    if (x >= 280 && x <= 280 && y >= 200 && y <= 600) {
+      y += 5;
+          
+    }
+    if (x >= 280 && x <= 280 && y >= 200 && y <= 590) {
+      y -= 5;
+         
+    }
+    //---enclos maison est---///
+
+    if (x >= 426 && x <= 600 && y >= 550 && y <= 620) {
+      x += 5;
+    }
+    if (x >= 412 && x <= 600 && y >= 550 && y <= 620) {
+      x -= 5;
+    }
+    if (x >= 426 && x <= 600 && y >= 550 && y <= 626) {
+      y += 5;
+          
+    }
+    if (x >= 426 && x <= 600 && y >= 540 && y <= 620) {
+      y -= 5;
+         
+    }
     //---MAP2 TRANSFER vers map 1--/
 
     if (y >= 752) {
@@ -2148,8 +2252,18 @@ function map1Affichage() {
       commentInput.style('opacity', '0.65');
       commentInput.style("resize", "none");
       commentInput.style("z-index", "1000");
+      if (FR == 255) {
       commentInput.attribute("placeholder", "N'hésitez pas à laisser un commentaire ici!");
+      }
+      if (EN == 255) {
+      commentInput.attribute("placeholder", "Feel free to leave a comment here!");
+      }
+      if (FR == 255) {
       sendButton = createButton('Envoyer');
+      }
+      if (EN == 255) {
+      sendButton = createButton('Send');
+      }
       sendButton.position(windowWidth/2 - 250, windowHeight/2 + 310, "absolute");
       sendButton.style("font-family", "pkmndp");
       sendButton.style('color', '#e9dcd1');
@@ -2183,6 +2297,25 @@ function map1Affichage() {
     if (!pseudoInput) {
       affichageCommentaires = false; // mettre à jour la variable booléenne
       suppCommentaires();
+    }
+    ///panneau5 Affichage
+    if (x >= 190 && x <= 270 && y >= 2632 && y <= 2680) {
+      noTint();
+      image(img9, 0, y + 150);
+      fill(255, 150);
+      if (FR == 255) {
+        text("Vos actions et vos choix peuvent influer", 484, y + 226);
+        text("sur le comportement des autres habitants.", 484, y + 252);
+        text("Si vous avez mauvaise réputation, certaine", 484, y + 278);
+        text("personnes peuvent devenir très méfiante.", 484, y + 304);
+      }
+      if (EN == 255) {
+        text("Face formidable trainers in", 484, y + 226);
+        text("battles as challenging as they are epic.", 484, y + 252);
+        text("Lead your Pokemon to victory against", 484, y + 278);
+        text("great champions to win their kingdom.", 484, y + 304);
+      }
+
     }
 }
 
@@ -2279,7 +2412,17 @@ function map2CharacterControl() {
     y += 5;
     a = 1;
   }
+  if (y <= 700 && y >= 640){
+  image(chambre2, 86, 439);
+  } 
+  if (y <= 622 ){
+  image(chambre3, 86, 439);
+  }else{
+  image(chambre1, 86, 439); 
+  }
   map2Affichage();
+  
+  
 }
 
 function map2Environnement(){
@@ -2803,6 +2946,7 @@ function openchest() {
   image(playerCoffre, x, y-4);
   image(taverne2,79,2368);
   image(hokusai, 303, 2534);
+  image(licata, 49, 2560);
   tint(255, z);
   image(light2, 33, 2334);
   z += Z;
@@ -2854,6 +2998,7 @@ function openchest() {
     image(playerCoffre, x, y-4);
     image(taverne2,79,2368);
     image(hokusai, 303, 2534);
+    image(licata, 49, 2560);
     tint(255, z);
     image(light2, 33, 2334);
     z += Z;
@@ -2911,6 +3056,8 @@ function mamasan(){
   image(img7, x, y);
   image(taverne2,79,2368);
   image(hokusai, 303, 2534);
+  image(licata1, 49, 2560);
+  image(licata, 49, 2560);
   image(oldwoman2, 181, 2419);
   tint(255, z);
   image(light2, 33, 2334);
@@ -2950,6 +3097,8 @@ function mamasan(){
   image(img7, x, y);
   image(taverne2,79,2368);
   image(hokusai, 303, 2534);
+  image(licata1, 49, 2560);
+  image(licata, 49, 2560);
   image(oldwoman3, 181, 2419);
   tint(255, z);
   image(light2, 33, 2334);
@@ -2986,6 +3135,8 @@ function mamasan(){
   image(img3, x, y);
   image(taverne2,79,2368);
   image(hokusai, 303, 2534);
+  image(licata1, 49, 2560);
+  image(licata, 49, 2560);
   image(oldwoman3, 181, 2419);
   tint(255, z);
   image(light2, 33, 2334);
