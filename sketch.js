@@ -105,6 +105,8 @@ function preload() {
   kaio2 = loadImage("assets/kaio2.png");
   kaio3 = loadImage("assets/kaio3.png");
   kaio4 = loadImage("assets/kaio4.png");
+  bucheron = loadImage("assets/bucheron.gif");
+  bucheronFace = loadImage("assets/bucheronFace.gif");
   taverne = loadImage("assets/taverne.png");
   taverne2 = loadImage("assets/taverne2.gif");
   img16 = loadImage("assets/windowskin2.png");
@@ -1417,6 +1419,8 @@ function draw() {
       battle.reset();
       ponita.reset();
       fille.reset();
+      bucheron.reset();
+      bucheronFace.reset();
       img11.reset();
       bird1.reset();
 
@@ -1565,6 +1569,8 @@ function draw() {
          battle.reset();
          ponita.reset();
          fille.reset();
+         bucheron.reset();
+         bucheronFace.reset();
          img11.reset();
          bird1.reset();
 
@@ -1797,6 +1803,8 @@ function draw() {
       battle.reset();
       ponita.reset();
       fille.reset();
+      bucheron.reset();
+      bucheronFace.reset();
       img11.reset();
       bird1.reset();
 
@@ -1904,6 +1912,7 @@ function map1CharacterControl() {
   image(battle, 116, 2316);
   image(ponita, 484, 2576);
   image(fille, 484, 2576);
+  image(bucheron, 420, 2830);
   image(img11, 300, 1600);
   image(Img5, 0, 0);
   image(bird1, e, f);
@@ -1999,6 +2008,27 @@ function map1Affichage() {
       text("will make it a good battle companion.", 484, y + 304);
     }
   }
+
+    // bucheron dialogue
+    if (y >= 2780 && y <= 3000 && x >= 410 && x <= 500) {
+      noTint();
+      image(bucheronFace, 554, y + 46);
+      image(img25, 10, y + 130);
+  
+      fill(30, 250);
+      if (FR == 255) {
+        text("La zone de téléchargement se trouve au Sud. ", 484, y + 226);
+        text("Je vais nous faire une belle route !", 484, y + 252);
+        text("Mais y a encore pas mal d'arbres à abattre.", 484, y + 278);
+        text("Ca prendra surment du temps... ", 484, y + 304);
+      }
+      if (EN == 255) {
+        text("In this adventure, it takes time", 484, y + 226);
+        text("for your pokemon to obey you.", 484, y + 252);
+        text("Only friendship bonds and perseverance", 484, y + 278);
+        text("will make it a good battle companion.", 484, y + 304);
+      }
+    }
 
   // Sasha dialogue
   if (y >= 2316 && y <= 2410 && x >= 280 && x <= 394) {
@@ -2559,7 +2589,34 @@ async function tavernCounter(playerMessage) {
       },
       body: JSON.stringify({
         messages: [
-            { role: 'system', content: `Tu es Licata, un compteur, un poète, un barde merveilleux. Tu fais partie d'un rpg, le joueur te retrouve toujours assis à ta table dans la taverne du village. Le jeu est en conception et toi tu fais souvent l'éloge des concepteurs, tu raconte des histoires sur leur travail et tu réponds avec créativité et humour aux joueurs qui viennent te parler.` },
+            { role: 'system', content: ` Tu es Licata, un compteur, un poète, un barde merveilleux.
+                                         Tu fais partie d'un rpg Pokemon dans le Japon féodal du nom de "Pokemon Ocarina of Time".
+                                         Le joueur te retrouve toujours assis à ta table dans la taverne de Mama-San.
+                                         Tu informes le joueur de l'avancement du jeu et de son devellopement avec des haïku.
+                                         Tu réponds avec créativité et humour aux joueurs qui viennent te parler.
+                                         Restes mystérieux et poètique.
+
+                                         Le jeu est en conception depuis maintenant 2 ans.
+                                         Dans ce jeu le monde est peuplé de Pokemon.
+                                         Le pokemon legendaire Célébie, maitre du temps, joue un rôle capital dans cette histoire.
+                                         L'histoire du jeu se déroule dans un japon médiéval, au 16eme siècle, peu avant la guerre de Sekigahara.  
+                                         Oda Nabunaga est le méchant de cette histoire. Afin de réaliser ces ambitions personnel, il réalisa une ancienne prophétie et libera le pouvoir secret et destructeur des pokemon Zarbis.
+                                         Dans le jeu il y a des combats pokemons au tour pas tour mais aussi des combats au sabre comme dans un Action-RPG.
+                                         Les concepteurs du jeu sont à la recherche de devellopeur pour les aider a finir le jeu.
+                                         Dans ce jeu il y aura des nouvelles formes de pokemon et des nouvelles evolution.
+                                         Il y aura plus de 300 pokemon dans dans le jeu.
+                                         Oda Nabunaga est accompagné de quatres generaux surpuissant qui faudra vaincre.
+                                         Le joueur devra retrouver celebie et voyager dans le temps pour sauver son royaume et sa famille.
+                                         Le joueur devra créer des lien d'amitier solide avec les pokemons qu'il rencontre.
+                                         Le jeu sera bientôt disponible en téléchargement.
+                                         La zone de telechargement du jeu se trouve en dehors de la taverne au sud de la plaine, le bucheron est en train de dégager un chemin.
+                                         
+                                         Tu ne réponds que par des haïku (poème japonais) de 3, 4 phrases.
+                                         Ta réponse ne peux jamais dépasser 40 mots. 
+                                         Reste bref dans tes reponses.
+                                         Te donne les informations une par une, jamais tout d'un bloc.
+                                         Tu n'inventes aucuns noms. Tu n'invente aucune fausse information. 
+` },
             { role: 'user', content: `${playerMessage}` },
         ]
       }),
@@ -2611,16 +2668,16 @@ function map4Affichage() {
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
         npcResponseBox.style("font-family", "pkmndp");
-        npcResponseBox.style("font-size", "20px");
+        npcResponseBox.style("font-size", "24px");
         npcResponseBox.style("color", "#000000");
         npcResponseBox.style("background-color", "#D9D9D9");
         npcResponseBox.style("width", "540px"); // Change this to fit your needs
-        npcResponseBox.style("height", "105px"); // Change this to fit your needs
+        npcResponseBox.style("height", "100px"); // Change this to fit your needs
         npcResponseBox.style("overflow", "auto");
         npcResponseBox.style("z-index", "1000");
         npcResponseBox.style("text-align", "center");
         npcResponseBox.style("padding-top", "5px");
-        npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
+        npcResponseBox.position(windowWidth/2 - 85 , 515);
       }
 
 
@@ -2630,11 +2687,11 @@ function map4Affichage() {
       commentInput2 = createElement('textarea').size(280, 180);
       commentInput2.position(windowWidth/2 - 52 , 224 );
       commentInput2.style("font-family", "pkmndp");
-      commentInput2.style("font-size", "16px");
+      commentInput2.style("font-size", "24px");
       commentInput2.style('opacity', '0.65');
       commentInput2.style("resize", "none");
       commentInput2.style("z-index", "1000");
-      commentInput2.attribute("placeholder", "");
+      commentInput2.attribute("placeholder", "...?");
       sendButton2 = createButton('Envoyer').size(282, 20);
       sendButton2.position(windowWidth/2 -50 , 420);
       sendButton2.style("font-family", "pkmndp");
@@ -2651,7 +2708,13 @@ function map4Affichage() {
         let i = 0;
         const intervalId = setInterval(() => {
           npcText = `Laisse moi un instant que je trouve mes mots <br/>${thinkingDots[i % 3]}`
+          npcTextEN = `Give me a moment to find my words <br/>${thinkingDots[i % 3]}`
+          if (FR == 255) {
           npcResponseBox.html(npcText); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          }
+          if (EN == 255) {
+            npcResponseBox.html(npcTextEN); // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
+          }
           redraw();
           i += 1;
         }, 500);
@@ -2676,13 +2739,19 @@ function map4Affichage() {
           npcResponseBox.html("Je connais le passé et le future de ce récit.<br/>Nul n'a de secret pour moi! Pourtant...Qui es tu?<br/>Et que me veux-tu étranger?");
         }
         if (EN == 255) {
-          npcResponseBox.html(npcTextEN);
+          npcResponseBox.html("I know the past and the future of this story.<br/>No one has a secret for me! Yet...Who are you?<br/>And what do you want from me stranger?");
         }
         firstMeeting = false;
       } else {
         console.log('Not first meeting');
+        if (FR == 255) {
         npcResponseBox.html("Tiens te revoilà ! Que puis je faire pour toi ?");
+        }
+        if (EN == 255) {
+          npcResponseBox.html("Hey, here you are again! What can I do for you?");
+        }
       }
+
 
     }
   } else {
@@ -3250,7 +3319,7 @@ function windowResized() {
 
     // // Redimensionner la boite de dialogue licata
     if (npcResponseBox) {
-      npcResponseBox.position(windowWidth/2 - 85 , windowHeight/2 + 135);
+      npcResponseBox.position(windowWidth/2 - 85 , 515);
     }
   
 }
@@ -3274,29 +3343,38 @@ function langueENG(){
 }
 
 function wordWrap(str, maxWidth) {
-  var newLineStr = "<br/>"; 
-  done = false; 
+  var newLineStr = "";
+  done = false;
   res = '';
-  while (str.length > maxWidth) {                 
-      found = false;
-      // Cherche l'espace le plus proche du "maxWidth"
-      for (i = maxWidth - 1; i >= 0; i--) {
-          if (str[i] === ' ') {
-              res = res + [str.slice(0, i), newLineStr].join('');
-              str = str.slice(i + 1);
-              found = true;
-              break;
-          }
+  var currentMaxWidth = maxWidth; // Ajout d'une variable pour représenter maxWidth
+  
+  while (str.length > currentMaxWidth) {                 
+    found = false;
+    
+    // Cherche l'espace le plus proche du "currentMaxWidth"
+    for (i = currentMaxWidth - 1; i >= 0; i--) {
+      if (str[i] === ' ') {
+        res = res + [str.slice(0, i), newLineStr].join('');
+        str = str.slice(i + 1);
+        found = true;
+        break;
       }
-      // Si aucun espace n'est trouvé, on coupe le texte au "maxWidth"
-      if (!found) {
-          res += [str.slice(0, maxWidth), newLineStr].join('');
-          str = str.slice(maxWidth);
-      }
+    }
+    
+    // Si aucun espace n'est trouvé, on coupe le texte au "currentMaxWidth"
+    if (!found) {
+      res += [str.slice(0, currentMaxWidth), newLineStr].join('');
+      str = str.slice(currentMaxWidth);
+    }
   }
+  
   return res + str;
 }
 
+// Utilisation de la fonction avec une nouvelle valeur pour maxWidth
+var myString = "";
+var newMaxWidth = 500;
+var wrappedText = wordWrap(myString, newMaxWidth);
 // une fonction qui permet d'afficher les dimensions de la fenêtre dans la console et la valeur de xPercentage et yPercentage
 function displayWindowDimensions() {
   let windowWidthPercentage = Math.round((windowWidth * 100) / windowWidth);
