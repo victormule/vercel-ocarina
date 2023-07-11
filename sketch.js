@@ -2129,10 +2129,10 @@ function map1Affichage() {
         text("Ca prendra surment du temps... ", 484, y + 304);
       }
       if (EN == 255) {
-        text("In this adventure, it takes time", 484, y + 226);
-        text("for your pokemon to obey you.", 484, y + 252);
-        text("Only friendship bonds and perseverance", 484, y + 278);
-        text("will make it a good battle companion.", 484, y + 304);
+        text("The download area is located to the South.", 484, y + 226);
+        text("I'll create a nice road for us!", 484, y + 252);
+        text("But there are still a lot of trees to cut down.", 484, y + 278);
+        text("It will probably take some time...", 484, y + 304);
       }
     }
 
@@ -2309,10 +2309,10 @@ function map1Affichage() {
         text("personnes peuvent devenir très méfiante.", 484, y + 304);
       }
       if (EN == 255) {
-        text("Face formidable trainers in", 484, y + 226);
-        text("battles as challenging as they are epic.", 484, y + 252);
-        text("Lead your Pokemon to victory against", 484, y + 278);
-        text("great champions to win their kingdom.", 484, y + 304);
+        text("Your actions and choices can influence", 484, y + 226);
+        text("the behavior of other inhabitants.", 484, y + 252);
+        text("If you have a bad reputation, some", 484, y + 278);
+        text("people may become very suspicious.", 484, y + 304);
       }
 
     }
@@ -2930,9 +2930,9 @@ function map4Affichage() {
       text("Je te laisse admirer !", 476+186, y + 302);
     }
     if (EN == 255) {
-      text("Since the developers settled here,", 476, y + 230);
-      text("I've been seeing a lot of new travelers arriving.", 476, y + 266);
-      text("And that's good for business!", 476, y + 302);
+      text("With Smeargle, we have traveled", 476+186, y + 230);
+      text("the region and created some masterpieces.", 476+186, y + 266);
+      text("I'll let you admire them!", 476+186, y + 302);
     }
   }
 }
