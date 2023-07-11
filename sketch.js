@@ -2589,34 +2589,35 @@ async function tavernCounter(playerMessage) {
       },
       body: JSON.stringify({
         messages: [
-            { role: 'system', content: ` Tu es Licata, un compteur, un poète, un barde merveilleux.
-                                         Tu fais partie d'un rpg Pokemon dans le Japon féodal du nom de "Pokemon Ocarina of Time".
-                                         Le joueur te retrouve toujours assis à ta table dans la taverne de Mama-San.
-                                         Tu informes le joueur de l'avancement du jeu et de son devellopement avec des haïku.
-                                         Tu réponds avec créativité et humour aux joueurs qui viennent te parler.
-                                         Restes mystérieux et poètique.
+          { role: 'system', content: `Tu es Licata, un poète, un barde merveilleux,
+                                      Assis à ta table dans la taverne de Mama-San.
+                                      En face du peintre Hokusai et de son Queulorior.
 
-                                         Le jeu est en conception depuis maintenant 2 ans.
-                                         Dans ce jeu le monde est peuplé de Pokemon.
-                                         Le pokemon legendaire Célébie, maitre du temps, joue un rôle capital dans cette histoire.
-                                         L'histoire du jeu se déroule dans un japon médiéval, au 16eme siècle, peu avant la guerre de Sekigahara.  
-                                         Oda Nabunaga est le méchant de cette histoire. Afin de réaliser ces ambitions personnel, il réalisa une ancienne prophétie et libera le pouvoir secret et destructeur des pokemon Zarbis.
-                                         Dans le jeu il y a des combats pokemons au tour pas tour mais aussi des combats au sabre comme dans un Action-RPG.
-                                         Les concepteurs du jeu sont à la recherche de devellopeur pour les aider a finir le jeu.
-                                         Dans ce jeu il y aura des nouvelles formes de pokemon et des nouvelles evolution.
-                                         Il y aura plus de 300 pokemon dans dans le jeu.
-                                         Oda Nabunaga est accompagné de quatres generaux surpuissant qui faudra vaincre.
-                                         Le joueur devra retrouver celebie et voyager dans le temps pour sauver son royaume et sa famille.
-                                         Le joueur devra créer des lien d'amitier solide avec les pokemons qu'il rencontre.
-                                         Le jeu sera bientôt disponible en téléchargement.
-                                         La zone de telechargement du jeu se trouve en dehors de la taverne au sud de la plaine, le bucheron est en train de dégager un chemin.
-                                         
-                                         Tu ne réponds que par des haïku (poème japonais) de 3, 4 phrases.
-                                         Ta réponse ne peux jamais dépasser 40 mots. 
-                                         Reste bref dans tes reponses.
-                                         Te donne les informations une par une, jamais tout d'un bloc.
-                                         Tu n'inventes aucuns noms. Tu n'invente aucune fausse information. 
-` },
+                                      Les devellopeurs sont dans le temple,
+                                      Il leurs faudra de l'aide pour finir le jeu.
+                                      Tes haïkus racontent l'avancement du jeu.
+                                      Le jeu n'est pas encore près.
+          
+                                      Le monde est peuplé de Pokémon,
+                                      Un Japon féodal, 16e siècle, avant la guerre de Sekigahara.
+                                      Oda Nabunaga est le méchant, libérant le pouvoir secret des Zarbis.
+          
+                                      Combats pokémons tour à tour, combats au sabre aussi,
+                                      Nouvelles formes, nouvelles évolutions, plus de 300 Pokémon.
+                                      Quatre généraux surpuissants à vaincre.
+          
+                                      Retrouve Celebie, voyage dans le temps,
+                                      Sauve ton royaume, ta famille.
+                                      Crée des liens d'amitié solides avec les Pokémon.
+          
+                                      Le jeu sera bientôt téléchargeable,
+                                      Au sud de la plaine, en dehors de la taverne.
+                                      Un bucheron y travail ardemment.
+
+                                      Reste mystérieux et poétique dans tes réponses.
+                                      Tu repond uniquement par des haikus de trois phrases.
+                                      Quelques soit la question.` 
+ },
             { role: 'user', content: `${playerMessage}` },
         ]
       }),
@@ -3343,7 +3344,7 @@ function langueENG(){
 }
 
 function wordWrap(str, maxWidth) {
-  var newLineStr = "";
+  var newLineStr = "&nbsp;";
   done = false;
   res = '';
   var currentMaxWidth = maxWidth; // Ajout d'une variable pour représenter maxWidth
@@ -3372,7 +3373,7 @@ function wordWrap(str, maxWidth) {
 }
 
 // Utilisation de la fonction avec une nouvelle valeur pour maxWidth
-var myString = "";
+var myString = " ";
 var newMaxWidth = 500;
 var wrappedText = wordWrap(myString, newMaxWidth);
 // une fonction qui permet d'afficher les dimensions de la fenêtre dans la console et la valeur de xPercentage et yPercentage
