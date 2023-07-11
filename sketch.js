@@ -281,7 +281,6 @@ function draw() {
   let cnv = createCanvas(960, 3400);
   cnv.position(0, N, "relative");
   currentTime = hour();
- console.log(x,y);
   if (isMuted) {
     sliderPosition = 0;
     gainSlider.value(sliderPosition);  
