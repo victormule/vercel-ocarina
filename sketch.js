@@ -2762,7 +2762,7 @@ async function tavernCounter(playerMessage) {
                                       Reste mystérieux et poétique dans tes réponses.
                                       Tu repond uniquement par des haikus de trois phrases.
                                       Quelques soit la question.` 
- },
+            },
             { role: 'user', content: `${playerMessage}` },
         ]
       }),
@@ -2874,8 +2874,10 @@ function map4Affichage() {
         let formattedText = formatHaiku(npcResponse); // ici, 50 est la longueur maximale d'une ligne
         console.log(formattedText);
         npcText = formattedText;
+        console.log(npcText);
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
         npcResponseBox.html(npcText);
+
         redraw();
       });
 
@@ -3526,9 +3528,15 @@ function wordWrap(str, maxWidth) {
   return res + str;
 }
 
+// function formatHaiku(str) {
+//   var newLineStr = ",<br/>";
+//   return str.replace(/, (?=[A-Z])/g, newLineStr);
+// }
+
 function formatHaiku(str) {
-  var newLineStr = ",<br/>";
-  return str.replace(/, (?=[A-Z])/g, newLineStr);
+  var newLineStr = ",</p><p>";
+  str = '<p>' + str.replace(/, (?=[A-Z])/g, newLineStr) + '</p>';
+  return str;
 }
 
 
