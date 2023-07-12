@@ -2813,7 +2813,6 @@ function map4Affichage() {
       console.log(firstMeeting);
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
-        npcResponseBox.classList.add('npcResponseBox');
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "24px");
         npcResponseBox.style("color", "#000000");
@@ -2876,9 +2875,8 @@ function map4Affichage() {
         console.log(formattedText);
         npcText = formattedText;
         console.log(npcText);
-        let box = document.getElementsByClassName('npcResponseBox');
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
-        box.innerHtml = npcText;
+        npcResponseBox.html(npcText);
 
         redraw();
       });
@@ -3544,7 +3542,7 @@ function wordWrap(str, maxWidth) {
 function formatHaiku(str) {
   var lines = str.split(/, (?=[A-Z])/g);
   for (var i = 0; i < lines.length; i++) {
-    lines[i] = lines[i] + '<br/>';
+    lines[i] = lines[i] + ' <br/>';
   }
   return lines.join('');
 }
