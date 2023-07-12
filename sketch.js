@@ -2781,6 +2781,15 @@ async function tavernCounter(playerMessage) {
   return npcResponse;
 }
 
+function formatHaiku(str) {
+  var lines = str.split(/, (?=[A-Z])/g);
+  for (var i = 0; i < lines.length; i++) {
+    lines[i] = lines[i] + '\n';  // utilise '\n' au lieu de '<br/>'
+  }
+  return lines.join('');
+}
+
+
 function map4Affichage() {
         //---Affichage mama-san---//
   if (y >= 2200 && y <= 2500 && x >= 170 && x <= 220) {
@@ -2813,6 +2822,7 @@ function map4Affichage() {
       console.log(firstMeeting);
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
+        npcResponseBox.style("white-space", "pre-wrap");
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "24px");
         npcResponseBox.style("color", "#000000");
@@ -3539,13 +3549,13 @@ function wordWrap(str, maxWidth) {
 //   return str;
 // }
 
-function formatHaiku(str) {
-  var lines = str.split(/, (?=[A-Z])/g);
-  for (var i = 0; i < lines.length; i++) {
-    lines[i] = lines[i] + ' <br/>';
-  }
-  return lines.join('');
-}
+// function formatHaiku(str) {
+//   var lines = str.split(/, (?=[A-Z])/g);
+//   for (var i = 0; i < lines.length; i++) {
+//     lines[i] = lines[i] + ' <br/>';
+//   }
+//   return lines.join('');
+// }
 
 
 
