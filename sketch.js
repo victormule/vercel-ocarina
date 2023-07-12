@@ -3533,10 +3533,18 @@ function wordWrap(str, maxWidth) {
 //   return str.replace(/, (?=[A-Z])/g, newLineStr);
 // }
 
+// function formatHaiku(str) {
+//   var newLineStr = ",</p><p>";
+//   str = '<p>' + str.replace(/, (?=[A-Z])/g, newLineStr) + '</p>';
+//   return str;
+// }
+
 function formatHaiku(str) {
-  var newLineStr = ",</p><p>";
-  str = '<p>' + str.replace(/, (?=[A-Z])/g, newLineStr) + '</p>';
-  return str;
+  var lines = str.split(', ');
+  for (var i = 0; i < lines.length; i++) {
+    lines[i] = lines[i] + '<br/>';
+  }
+  return lines.join('');
 }
 
 
