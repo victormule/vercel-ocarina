@@ -2871,7 +2871,7 @@ function map4Affichage() {
         clearInterval(intervalId);
         
         // Affiche la réponse du PNJ
-        let formattedText = wordWrap(npcResponse, 65); // ici, 50 est la longueur maximale d'une ligne
+        let formattedText = formatHaiku(npcResponse); // ici, 50 est la longueur maximale d'une ligne
         npcText = formattedText;
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
         npcResponseBox.html(npcText);
@@ -3524,6 +3524,12 @@ function wordWrap(str, maxWidth) {
   
   return res + str;
 }
+
+function formatHaiku(str) {
+  var newLineStr = ",<br/>";
+  return str.replace(/, (?=[A-Z])/g, newLineStr);
+}
+
 
 // Utilisation de la fonction avec une nouvelle valeur pour maxWidth
 var myString = " ";
