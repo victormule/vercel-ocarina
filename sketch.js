@@ -2813,6 +2813,7 @@ function map4Affichage() {
       console.log(firstMeeting);
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
+        npcResponseBox.classList.add('npcResponseBox');
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "24px");
         npcResponseBox.style("color", "#000000");
@@ -2875,8 +2876,9 @@ function map4Affichage() {
         console.log(formattedText);
         npcText = formattedText;
         console.log(npcText);
+        let box = document.getElementsByClassName('npcResponseBox');
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
-        npcResponseBox.html(npcText);
+        box.innerHtml += npcText;
 
         redraw();
       });
