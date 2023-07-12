@@ -1,3 +1,21 @@
+window.onload = function() {
+  var loader = document.getElementById("loader");
+  var progress = 0;
+  
+  function updateLoader() {
+    progress += 1;
+    loader.style.strokeDashoffset = 600 - (600 * progress) / 100; // Mettre à jour la progression visuelle
+    if (progress < 100) {
+      requestAnimationFrame(updateLoader);
+    } else {
+      loader.style.display = "none"; // Masquer la barre de chargement une fois terminée
+    }
+  }
+  
+  updateLoader();
+};
+
+
 let FR = 255;
 let EN = 150;
 let fr = 100; //starting FPS
@@ -281,6 +299,8 @@ function draw() {
   let cnv = createCanvas(960, 3400);
   cnv.position(0, N, "relative");
   currentTime = hour();
+  console.log(x,y);
+
   if (isMuted) {
     sliderPosition = 0;
     gainSlider.value(sliderPosition);  
@@ -1415,12 +1435,10 @@ function draw() {
       x -= 5;
     }
     if (x >= 362 && x <= 410 && y >= 694 && y <= 712) {
-      y += 5;
-      
+      y += 5;  
     }
     if (x >= 362 && x <= 410 && y >= 682 && y <= 705) {
-      y -= 5;
-     
+      y -= 5; 
     }
 
     //---table---///
@@ -1432,14 +1450,67 @@ function draw() {
       x -= 5;
     }
     if (x >= 145 && x <= 215 && y >= 600 && y <= 650) {
-      y += 5;
-          
+      y += 5;      
     }
     if (x >= 145 && x <= 215 && y >= 590 && y <= 640) {
-      y -= 5;
-         
+      y -= 5;     
     }
+    //---vase---///
 
+    if (x >= 110 && x <= 165 && y >= 710 && y <= 1000) {
+      x += 5;
+    }
+    if (x >= 100 && x <= 150 && y >= 710 && y <= 1000) {
+      x -= 5;
+    }
+    if (x >= 110 && x <= 150 && y >= 710 && y <= 1000) {
+      y += 5;      
+    }
+    if (x >= 110 && x <= 160 && y >= 688 && y <= 1000) {
+      y -= 5;     
+    }
+      //---vase2---///
+
+    if (x >= 90 && x <= 160 && y >= 715 && y <= 1000) {
+      x += 5;
+    }
+    if (x >= 80 && x <= 150 && y >= 715 && y <= 1000) {
+      x -= 5;
+    }
+    if (x >= 90 && x <= 150 && y >= 715 && y <= 1000) {
+      y += 5;     
+    }
+    if (x >= 90 && x <= 160 && y >= 704 && y <= 1000) {
+      y -= 5;     
+    }
+      //---bambou---///
+
+    if (x >= 90 && x <= 190 && y >= 728 && y <= 1000) {
+      x += 5;
+    }
+    if (x >= 80 && x <= 180 && y >= 728 && y <= 1000) {
+      x -= 5;
+    }
+    if (x >= 90 && x <= 180 && y >= 728 && y <= 1000) {
+      y += 5;       
+    }
+    if (x >= 90 && x <= 180 && y >= 720 && y <= 1000) {
+      y -= 5;      
+    }
+      //---bambou2---///
+
+    if (x >= 340 && x <= 388 && y >= 728 && y <= 1000) {
+      x += 5;
+    }
+    if (x >= 330 && x <= 380 && y >= 728 && y <= 1000) {
+      x -= 5;
+    }
+    if (x >= 340 && x <= 380 && y >= 728 && y <= 1000) {
+      y += 5;       
+    }
+    if (x >= 340 && x <= 380 && y >= 720 && y <= 1000) {
+      y -= 5;     
+    }
      //---enclos maison sud---///
 
     if (x >= 370 && x <= 600 && y >= 620 && y <= 620) {
@@ -1537,179 +1608,7 @@ function draw() {
     }
   }
 
-  //------------MAP4------------//
-
-  if (mapping == 4) {
-
-    map4CharacterControl();
-
-        //---MAP 4 limite---//
-        //---mur---//
-        if (x <= 46) {
-          x += 5;
-        }
-        if (x >= 338) {
-          x -= 5;
-        }
-        if (y <= 2400) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 40 && x <= 170 && y >= 2608) {
-          y -= 5;
-          N += 5;
-        }
-        if (x >= 220 && x <= 360 && y >= 2608) {
-          y -= 5;
-          N += 5;
-        }
-        //---meuble--//
-
-        //---(table gauche)---//
-        if (x >= 60 && x <= 140 && y >= 2522 && y <= 2572) {
-          x += 5;
-        }
-        if (x >= 52 && x <= 132 && y >= 2522 && y <= 2572) {
-          x -= 5;
-        }
-        if (x >= 60 && x <= 132 && y >= 2522 && y <= 2580) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 60 && x <= 132 && y >= 2516 && y <= 2572) {
-          y -= 5;
-          N += 5;
-        }
-        //---(Licata)---//
-        if (x >= 0 && x <= 120 && y >= 2550 && y <= 2580) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 0 && x <= 120 && y >= 2536 && y <= 2572) {
-          y -= 5;
-          N += 5;
-        }
-
-        //---(table droite)---//
-        if (x >= 253 && x <= 336 && y >= 2522 && y <= 2572) {
-          x += 5;
-        }
-        if (x >= 244 && x <= 328 && y >= 2522 && y <= 2572) {
-          x -= 5;
-        }
-        if (x >= 252 && x <= 700 && y >= 2522 && y <= 2580) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 252 && x <= 700 && y >= 2516 && y <= 2572) {
-          y -= 5;
-          N += 5;
-        }
-
-        //---(comptoire)---//
-        if (x >= 66 && x <= 290 && y >= 2454 && y <= 2476) {
-          x += 5;
-        }
-        if (x >= 58 && x <= 282 && y >= 2454 && y <= 2476) {
-          x -= 5;
-        }
-        if (x >= 66 && x <= 282 && y >= 2454 && y <= 2488) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 66 && x <= 282 && y >= 2446 && y <= 2476) {
-          y -= 5;
-          N += 5;
-        }
-        if (x >= 250 && x <= 290 && y >= 2000 && y <= 2470) {
-          x += 5;
-        }
-        //---(vase gauche)---//
-        if (x >= 0 && x <= 76 && y >= 0 && y <= 2420) {
-          x += 5;
-        }
-        if (x >= 0 && x <= 70 && y >= 0 && y <= 2420) {
-          x -= 5;
-        }
-        if (x >= 0 && x <= 70 && y >= 0 && y <= 2430) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 0 && x <= 70 && y >= 0 && y <= 2420) {
-          y -= 5;
-          N += 5;
-        }
-
-        //---armoire et cheminée et coffre)---//
-        if (x >= 100 && x <= 476 && y >= 0 && y <= 2420) {
-          x += 5;
-        }
-        if (x >= 86 && x <= 470 && y >= 0 && y <= 2420) {
-          x -= 5;
-        }
-        if (x >= 100 && x <= 470 && y >= 0 && y <= 2430) {
-          y += 5;
-          N -= 5;
-        }
-        if (x >= 100 && x <= 470 && y >= 0 && y <= 2420) {
-          y -= 5;
-          N += 5;
-        }
-
-        //---MAP4 TRANSFER vers map 1--/
-
-      if (y >= 2618) {
-         y = 2645;
-         x = 190;
-         N = -2311;
-
-         cloud2.reset();
-         cloud1.reset();
-         bg.reset();
-         img12.reset();
-         ponita1.reset();
-         fille1.reset();
-         battle1.reset();
-         combat2.reset();
-         combat1.reset();
-         battle.reset();
-         ponita.reset();
-         fille.reset();
-         bucheron.reset();
-         bucheronFace.reset();
-         img11.reset();
-         bird1.reset();
-
-         song3.playMode("sustain");
-         song3.pause();
-         song.loop();
-         song.playMode("restart");
-         song.play();
-         mapping = 1;
-        }
-        //--transfere coffre--//
-        if (grandCoffre == true){
-       if (x >= 200 && x <= 470 && y >= 0 && y <= 2440) {   
-        mapping = 5;
-            
-          
-        }
-      }
-  }
-  //------------MAP5------------//
-
-  if (mapping == 5) {
-      openchest();
-    
-  }
-    //------------MAP6------------//
-
-    if (mapping == 6) {
-      mamasan();
-    
-  }
-  
-  //------------MAP3------------//
+    //------------MAP3------------//
 
   if (mapping == 3) {
 
@@ -1924,6 +1823,178 @@ function draw() {
     }
 
     //-------//
+  }
+
+  //------------MAP4------------//
+
+  if (mapping == 4) {
+
+    map4CharacterControl();
+
+        //---MAP 4 limite---//
+        //---mur---//
+        if (x <= 46) {
+          x += 5;
+        }
+        if (x >= 338) {
+          x -= 5;
+        }
+        if (y <= 2400) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 40 && x <= 170 && y >= 2608) {
+          y -= 5;
+          N += 5;
+        }
+        if (x >= 220 && x <= 360 && y >= 2608) {
+          y -= 5;
+          N += 5;
+        }
+        //---meuble--//
+
+        //---(table gauche)---//
+        if (x >= 60 && x <= 140 && y >= 2522 && y <= 2572) {
+          x += 5;
+        }
+        if (x >= 52 && x <= 132 && y >= 2522 && y <= 2572) {
+          x -= 5;
+        }
+        if (x >= 60 && x <= 132 && y >= 2522 && y <= 2580) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 60 && x <= 132 && y >= 2516 && y <= 2572) {
+          y -= 5;
+          N += 5;
+        }
+        //---(Licata)---//
+        if (x >= 0 && x <= 120 && y >= 2550 && y <= 2580) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 0 && x <= 120 && y >= 2536 && y <= 2572) {
+          y -= 5;
+          N += 5;
+        }
+
+        //---(table droite)---//
+        if (x >= 253 && x <= 336 && y >= 2522 && y <= 2572) {
+          x += 5;
+        }
+        if (x >= 244 && x <= 328 && y >= 2522 && y <= 2572) {
+          x -= 5;
+        }
+        if (x >= 252 && x <= 700 && y >= 2522 && y <= 2580) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 252 && x <= 700 && y >= 2516 && y <= 2572) {
+          y -= 5;
+          N += 5;
+        }
+
+        //---(comptoire)---//
+        if (x >= 66 && x <= 290 && y >= 2454 && y <= 2476) {
+          x += 5;
+        }
+        if (x >= 58 && x <= 282 && y >= 2454 && y <= 2476) {
+          x -= 5;
+        }
+        if (x >= 66 && x <= 282 && y >= 2454 && y <= 2488) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 66 && x <= 282 && y >= 2446 && y <= 2476) {
+          y -= 5;
+          N += 5;
+        }
+        if (x >= 250 && x <= 290 && y >= 2000 && y <= 2470) {
+          x += 5;
+        }
+        //---(vase gauche)---//
+        if (x >= 0 && x <= 76 && y >= 0 && y <= 2420) {
+          x += 5;
+        }
+        if (x >= 0 && x <= 70 && y >= 0 && y <= 2420) {
+          x -= 5;
+        }
+        if (x >= 0 && x <= 70 && y >= 0 && y <= 2430) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 0 && x <= 70 && y >= 0 && y <= 2420) {
+          y -= 5;
+          N += 5;
+        }
+
+        //---armoire et cheminée et coffre)---//
+        if (x >= 100 && x <= 476 && y >= 0 && y <= 2420) {
+          x += 5;
+        }
+        if (x >= 86 && x <= 470 && y >= 0 && y <= 2420) {
+          x -= 5;
+        }
+        if (x >= 100 && x <= 470 && y >= 0 && y <= 2430) {
+          y += 5;
+          N -= 5;
+        }
+        if (x >= 100 && x <= 470 && y >= 0 && y <= 2420) {
+          y -= 5;
+          N += 5;
+        }
+
+        //---MAP4 TRANSFER vers map 1--/
+
+      if (y >= 2618) {
+         y = 2645;
+         x = 190;
+         N = -2311;
+
+         cloud2.reset();
+         cloud1.reset();
+         bg.reset();
+         img12.reset();
+         ponita1.reset();
+         fille1.reset();
+         battle1.reset();
+         combat2.reset();
+         combat1.reset();
+         battle.reset();
+         ponita.reset();
+         fille.reset();
+         bucheron.reset();
+         bucheronFace.reset();
+         img11.reset();
+         bird1.reset();
+
+         song3.playMode("sustain");
+         song3.pause();
+         song.loop();
+         song.playMode("restart");
+         song.play();
+         mapping = 1;
+        }
+        //--transfere coffre--//
+        if (grandCoffre == true){
+       if (x >= 200 && x <= 470 && y >= 0 && y <= 2440) {   
+        mapping = 5;
+            
+          
+        }
+      }
+  }
+  //------------MAP5------------//
+
+  if (mapping == 5) {
+      openchest();
+    
+  }
+    //------------MAP6------------//
+
+    if (mapping == 6) {
+      mamasan();
+    
   }
 
 }
@@ -2762,7 +2833,7 @@ async function tavernCounter(playerMessage) {
                                       Reste mystérieux et poétique dans tes réponses.
                                       Tu repond uniquement par des haikus de trois phrases.
                                       Quelques soit la question.` 
- },
+            },
             { role: 'user', content: `${playerMessage}` },
         ]
       }),
@@ -2780,6 +2851,15 @@ async function tavernCounter(playerMessage) {
   console.log("GPT Response ===>", npcResponse);
   return npcResponse;
 }
+
+function formatHaiku(str) {
+  var lines = str.split(/, (?=[A-Z])/g);
+  for (var i = 0; i < lines.length; i++) {
+    lines[i] = lines[i] + '\n';  // utilise '\n' au lieu de '<br/>'
+  }
+  return lines.join('');
+}
+
 
 function map4Affichage() {
         //---Affichage mama-san---//
@@ -2813,6 +2893,7 @@ function map4Affichage() {
       console.log(firstMeeting);
       if (!npcResponseBox) {
         npcResponseBox = createElement('p');
+        npcResponseBox.style("white-space", "pre-wrap");
         npcResponseBox.style("font-family", "pkmndp");
         npcResponseBox.style("font-size", "24px");
         npcResponseBox.style("color", "#000000");
@@ -2871,10 +2952,13 @@ function map4Affichage() {
         clearInterval(intervalId);
         
         // Affiche la réponse du PNJ
-        let formattedText = wordWrap(npcResponse, 65); // ici, 50 est la longueur maximale d'une ligne
+        let formattedText = formatHaiku(npcResponse); // ici, 50 est la longueur maximale d'une ligne
+        console.log(formattedText);
         npcText = formattedText;
+        console.log(npcText);
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
         npcResponseBox.html(npcText);
+
         redraw();
       });
 
@@ -3525,6 +3609,27 @@ function wordWrap(str, maxWidth) {
   return res + str;
 }
 
+// function formatHaiku(str) {
+//   var newLineStr = ",<br/>";
+//   return str.replace(/, (?=[A-Z])/g, newLineStr);
+// }
+
+// function formatHaiku(str) {
+//   var newLineStr = ",</p><p>";
+//   str = '<p>' + str.replace(/, (?=[A-Z])/g, newLineStr) + '</p>';
+//   return str;
+// }
+
+// function formatHaiku(str) {
+//   var lines = str.split(/, (?=[A-Z])/g);
+//   for (var i = 0; i < lines.length; i++) {
+//     lines[i] = lines[i] + ' <br/>';
+//   }
+//   return lines.join('');
+// }
+
+
+
 // Utilisation de la fonction avec une nouvelle valeur pour maxWidth
 var myString = " ";
 var newMaxWidth = 500;
@@ -3537,4 +3642,3 @@ function displayWindowDimensions() {
   console.log("windowWidth: " + windowWidth + "px (" + windowWidthPercentage + "%)");
   console.log("windowHeight: " + windowHeight + "px (" + windowHeightPercentage + "%)");
 }
-
