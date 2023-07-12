@@ -3540,12 +3540,13 @@ function wordWrap(str, maxWidth) {
 // }
 
 function formatHaiku(str) {
-  var lines = str.split(', ');
+  var lines = str.split(/, (?=[A-Z])/g);
   for (var i = 0; i < lines.length; i++) {
     lines[i] = lines[i] + '<br/>';
   }
   return lines.join('');
 }
+
 
 
 // Utilisation de la fonction avec une nouvelle valeur pour maxWidth
