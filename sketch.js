@@ -2872,6 +2872,7 @@ function map4Affichage() {
         
         // Affiche la réponse du PNJ
         let formattedText = formatHaiku(npcResponse); // ici, 50 est la longueur maximale d'une ligne
+        console.log(formattedText);
         npcText = formattedText;
         // Remplacez cette ligne par la ligne qui affiche le texte dans la boîte de dialogue du PNJ
         npcResponseBox.html(npcText);
