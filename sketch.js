@@ -5,7 +5,7 @@ window.onload = function() {
   function updateLoader() {
     progress += 1;
     loader.style.strokeDashoffset = 600 - (600 * progress) / 100; // Mettre à jour la progression visuelle
-    if (progress < 100) {
+    if (progress < 50) {
       requestAnimationFrame(updateLoader);
     } else {
       loader.style.display = "none"; // Masquer la barre de chargement une fois terminée
