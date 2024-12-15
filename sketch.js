@@ -2810,7 +2810,7 @@ let npcTextEN = "I know the past and the future of this story.<br/>No one has a 
 let npcResponseBox;
 let firstMeeting = true;
 async function tavernCounter(playerMessage) {
-  const BASE_URL_API = 'https://ocarina-backend-production.up.railway.app/';
+  const BASE_URL_API = 'https://ocarina-backend-production-1150.up.railway.app/';
   // const BASE_URL_API = "http://127.0.0.1:3003/";
   console.log(playerMessage);
   const config = {
@@ -3350,7 +3350,7 @@ function toggleMute() {
 
 ///COMMENTAIRE FONCTION///
 async function afficherCommentaires() {
-  const BASE_URL_API = "https://ocarina-backend-production.up.railway.app";
+  const BASE_URL_API = "https://ocarina-backend-production-1150.up.railway.app";
   // const BASE_URL_API = "http://127.0.0.1:3003";
   const response = await fetch(`${BASE_URL_API}/comment`);
   const commentaires = await response.json();
@@ -3396,7 +3396,7 @@ commentairesDiv.style("word-wrap", "break-word");
 function envoyerSaisies() {
 let author = pseudoInput.value();
 let commentaire = commentInput.value();
-const BASE_URL_API = "https://ocarina-backend-production.up.railway.app";
+const BASE_URL_API = "https://ocarina-backend-production-1150.up.railway.app";
 // const BASE_URL_API = "http://127.0.0.1:3003";
 if (author=="")
 {
