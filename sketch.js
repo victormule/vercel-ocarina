@@ -2810,7 +2810,8 @@ let npcTextEN = "I know the past and the future of this story.<br/>No one has a 
 let npcResponseBox;
 let firstMeeting = true;
 async function tavernCounter(playerMessage) {
-  const BASE_URL_API = 'https://api-ocarina-ff8555760231.herokuapp.com/';
+  const BASE_URL_API = 'https://ocarina-backend-production.up.railway.app/';
+  // const BASE_URL_API = "http://127.0.0.1:3003/";
   console.log(playerMessage);
   const config = {
       method: 'POST',
@@ -3349,7 +3350,8 @@ function toggleMute() {
 
 ///COMMENTAIRE FONCTION///
 async function afficherCommentaires() {
-  const BASE_URL_API = "https://api-ocarina-ff8555760231.herokuapp.com";
+  const BASE_URL_API = "https://ocarina-backend-production.up.railway.app";
+  // const BASE_URL_API = "http://127.0.0.1:3003";
   const response = await fetch(`${BASE_URL_API}/comment`);
   const commentaires = await response.json();
   commentaires.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -3394,8 +3396,8 @@ commentairesDiv.style("word-wrap", "break-word");
 function envoyerSaisies() {
 let author = pseudoInput.value();
 let commentaire = commentInput.value();
-const BASE_URL_API = "https://api-ocarina-ff8555760231.herokuapp.com";
-// const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL_API = "https://ocarina-backend-production.up.railway.app";
+// const BASE_URL_API = "http://127.0.0.1:3003";
 if (author=="")
 {
     author = "Anonymous";
@@ -3408,7 +3410,6 @@ console.log(data)
 try {
     const response = fetch(`${BASE_URL_API}/comment/create`, {
         method: "POST",
-        mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
