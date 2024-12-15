@@ -2810,7 +2810,7 @@ let npcTextEN = "I know the past and the future of this story.<br/>No one has a 
 let npcResponseBox;
 let firstMeeting = true;
 async function tavernCounter(playerMessage) {
-  const BASE_URL_API = 'https://ocarina-api-244855f29b92.herokuapp.com/';
+  const BASE_URL_API = 'https://api-ocarina-ff8555760231.herokuapp.com/';
   console.log(playerMessage);
   const config = {
       method: 'POST',
@@ -3349,7 +3349,7 @@ function toggleMute() {
 
 ///COMMENTAIRE FONCTION///
 async function afficherCommentaires() {
-  const BASE_URL_API = "https://ocarina-api-244855f29b92.herokuapp.com";
+  const BASE_URL_API = "https://api-ocarina-ff8555760231.herokuapp.com";
   const response = await fetch(`${BASE_URL_API}/comment`);
   const commentaires = await response.json();
   commentaires.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -3394,7 +3394,7 @@ commentairesDiv.style("word-wrap", "break-word");
 function envoyerSaisies() {
 let author = pseudoInput.value();
 let commentaire = commentInput.value();
-const BASE_URL_API = "https://ocarina-api-244855f29b92.herokuapp.com";
+const BASE_URL_API = "https://api-ocarina-ff8555760231.herokuapp.com";
 // const BASE_URL = "http://127.0.0.1:8000";
 if (author=="")
 {
